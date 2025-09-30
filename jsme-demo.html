@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSME 分子编辑器演示</title>
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', 'PingFang SC', 'Hiragino Sans GB', Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .editor-container {
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            padding: 10px;
+            margin: 20px 0;
+            background-color: #f9f9f9;
+        }
+        .controls {
+            margin: 20px 0;
+            text-align: center;
+        }
+        .controls button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 0 5px;
+            font-size: 14px;
+        }
+        .controls button:hover {
+            background-color: #45a049;
+        }
+        .output {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #f0f0f0;
+            border-radius: 4px;
+            border-left: 4px solid #4CAF50;
+        }
+        .output h3 {
+            margin-top: 0;
+            color: #333;
+        }
+        .output pre {
+            background-color: white;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+        }
+        .input-section {
+            margin: 20px 0;
+        }
+        .input-section textarea {
+            width: 100%;
+            height: 100px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+        .info {
+            background-color: #e7f3ff;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+        
+        /* 中文字体优化和响应式设计 */
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 10px;
+            }
+            
+            #jsme_container {
+                width: 100% !important;
+                height: 300px !important;
+            }
+            
+            .controls button {
+                margin: 5px 2px;
+                padding: 8px 12px;
+                font-size: 12px;
+            }
+            
+            .input-section textarea {
+                height: 80px;
+            }
+        }
+        
+        /* 改善中文字体渲染 */
+        h1, h2, h3, h4 {
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        
+        p, li, button {
+            line-height: 1.7;
+        }
+        
+        /* 按钮hover效果优化 */
+        .controls button:active {
+            transform: translateY(1px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>JSME 分子编辑器演示</h1>
+        
+        <div class="info">
+            <h3>关于 JSME</h3>
+            <p>JSME（JavaScript 分子编辑器）是一个免费的基于网页的分子和反应绘制工具。
+            您可以绘制分子结构、反应式，并将它们导出为 SMILES、MOL 等多种格式。</p>
+        </div>
+
+        <div class="editor-container">
+            <h3>分子编辑器</h3>
+            <div id="jsme_container"></div>
+        </div>
+
+        <div class="controls">
+            <button onclick="getSmiles()">获取 SMILES</button>
+            <button onclick="getMolFile()">获取 MOL 文件</button>
+            <button onclick="clearEditor()">清空编辑器</button>
+            <button onclick="loadSample()">加载示例分子</button>
+        </div>
+
+        <div class="input-section">
+            <h3>从 SMILES/MOL 加载分子</h3>
+            <textarea id="inputMolecule" placeholder="在此输入 SMILES 字符串或 MOL 文件内容...">CCO</textarea>
+            <br><br>
+            <button onclick="loadMolecule()" style="background-color: #2196F3;">加载分子</button>
+        </div>
+
+        <div class="output">
+            <h3>输出结果</h3>
+            <div id="output">
+                <p>点击上方按钮查看分子数据...</p>
+            </div>
+        </div>
+
+        <!-- 详细使用说明 -->
+        <div style="background-color: #f8f9fa; padding: 30px; border-radius: 8px; margin: 40px 0; border: 1px solid #e9ecef;">
+            <h2 style="color: #333; margin-bottom: 20px;">🧬 使用说明</h2>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 30px;">
+                <div>
+                    <h3 style="color: #495057; border-bottom: 2px solid #28a745; padding-bottom: 5px;">基本操作</h3>
+                    <ul style="line-height: 1.8; color: #555;">
+                        <li><strong>绘制原子：</strong> 点击编辑器中的空白区域添加碳原子</li>
+                        <li><strong>更改元素：</strong> 右键点击原子或使用键盘快捷键（C=碳，O=氧，N=氮等）</li>
+                        <li><strong>绘制化学键：</strong> 从一个原子拖拽到另一个原子</li>
+                        <li><strong>删除：</strong> 选中原子或化学键后按 Delete 键</li>
+                        <li><strong>移动：</strong> 拖拽原子或分子片段到新位置</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 style="color: #495057; border-bottom: 2px solid #17a2b8; padding-bottom: 5px;">快捷键</h3>
+                    <ul style="line-height: 1.8; color: #555;">
+                        <li><strong>C：</strong> 碳原子</li>
+                        <li><strong>N：</strong> 氮原子</li>
+                        <li><strong>O：</strong> 氧原子</li>
+                        <li><strong>S：</strong> 硫原子</li>
+                        <li><strong>P：</strong> 磷原子</li>
+                        <li><strong>F, Cl, Br, I：</strong> 卤素</li>
+                        <li><strong>1,2,3：</strong> 单键、双键、三键</li>
+                        <li><strong>Delete：</strong> 删除选中元素</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div style="margin-bottom: 30px;">
+                <h3 style="color: #495057; border-bottom: 2px solid #ffc107; padding-bottom: 5px;">功能按钮详解</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+                    <div style="background: white; padding: 15px; border-radius: 6px; border-left: 4px solid #28a745;">
+                        <strong style="color: #28a745;">获取 SMILES</strong><br>
+                        <small style="color: #666;">导出当前分子的 SMILES 表示法，这是化学信息学中常用的分子线性表示方法</small>
+                    </div>
+                    <div style="background: white; padding: 15px; border-radius: 6px; border-left: 4px solid #007bff;">
+                        <strong style="color: #007bff;">获取 MOL 文件</strong><br>
+                        <small style="color: #666;">导出 MOL 格式文件内容，包含原子坐标和连接信息</small>
+                    </div>
+                    <div style="background: white; padding: 15px; border-radius: 6px; border-left: 4px solid #dc3545;">
+                        <strong style="color: #dc3545;">清空编辑器</strong><br>
+                        <small style="color: #666;">清除编辑器中的所有内容，开始新的分子绘制</small>
+                    </div>
+                    <div style="background: white; padding: 15px; border-radius: 6px; border-left: 4px solid #6c757d;">
+                        <strong style="color: #6c757d;">加载示例分子</strong><br>
+                        <small style="color: #666;">加载咖啡因分子作为示例，展示复杂分子结构</small>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-bottom: 30px;">
+                <h3 style="color: #495057; border-bottom: 2px solid #6610f2; padding-bottom: 5px;">支持的输入格式</h3>
+                <div style="background: white; padding: 20px; border-radius: 6px;">
+                    <div style="margin-bottom: 15px;">
+                        <strong>SMILES 示例：</strong>
+                        <ul style="font-family: monospace; color: #e83e8c; margin: 10px 0;">
+                            <li>CCO （乙醇）</li>
+                            <li>CC(=O)O （乙酸）</li>
+                            <li>c1ccccc1 （苯）</li>
+                            <li>CN1C=NC2=C1C(=O)N(C(=O)N2C)C （咖啡因）</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <strong>MOL 文件：</strong> 支持标准的 MDL Molfile 格式，包含原子坐标和键信息
+                    </div>
+                </div>
+            </div>
+
+            <div style="background: #e8f5e8; padding: 20px; border-radius: 6px; border: 1px solid #c3e6c3;">
+                <h3 style="color: #155724; margin-top: 0;">💡 使用提示</h3>
+                <ul style="color: #155724; line-height: 1.8;">
+                    <li>支持手机和平板设备的触摸操作</li>
+                    <li>可以复制粘贴分子结构</li>
+                    <li>支持立体化学（楔形键和虚线键）</li>
+                    <li>右键菜单提供更多编辑选项</li>
+                    <li>支持反应式绘制（箭头和试剂）</li>
+                </ul>
+            </div>
+
+            <div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 2px solid #dee2e6;">
+                <h3 style="color: #6c757d;">关于 JSME</h3>
+                <p style="color: #6c757d; line-height: 1.6;">
+                    JSME 由 Peter Ertl 和 Bruno Bienfait 开发，是 JME Java 小程序的 JavaScript 继承者。<br>
+                    它是一个免费的开源项目，遵循 BSD 许可证。<br>
+                    更多信息请访问：<a href="https://jsme-editor.github.io/" target="_blank" style="color: #007bff;">https://jsme-editor.github.io/</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Load JSME from CDN -->
+    <script src="https://jsme-editor.github.io/dist/jsme/jsme.nocache.js"></script>
+    
+    <script>
+        var jsmeApplet;
+
+        // Initialize JSME when page loads
+        function jsmeOnLoad() {
+            // Prevent multiple initialization
+            if (jsmeApplet) {
+                console.log("JSME already initialized");
+                return;
+            }
+            
+            // Clear any existing content in container
+            document.getElementById("jsme_container").innerHTML = "";
+            
+            // Create JSME instance
+            jsmeApplet = new JSApplet.JSME("jsme_container", "600px", "400px", {
+                "options": "stereo"
+            });
+            
+            // Set up callback for structure changes
+            jsmeApplet.setCallBack("AfterStructureModified", function(event) {
+                console.log("Structure modified");
+            });
+
+            console.log("JSME loaded successfully");
+        }
+
+        // Get SMILES string from editor
+        function getSmiles() {
+            if (jsmeApplet) {
+                var smiles = jsmeApplet.smiles();
+                document.getElementById("output").innerHTML = 
+                    "<h4>SMILES:</h4><pre>" + (smiles || "未绘制分子") + "</pre>";
+            } else {
+                alert("JSME 尚未加载完成");
+            }
+        }
+
+        // Get MOL file from editor
+        function getMolFile() {
+            if (jsmeApplet) {
+                var molFile = jsmeApplet.molFile();
+                document.getElementById("output").innerHTML = 
+                    "<h4>MOL 文件:</h4><pre>" + (molFile || "未绘制分子") + "</pre>";
+            } else {
+                alert("JSME 尚未加载完成");
+            }
+        }
+
+        // Clear the editor
+        function clearEditor() {
+            if (jsmeApplet) {
+                jsmeApplet.clear();
+                document.getElementById("output").innerHTML = "<p>编辑器已清空</p>";
+            } else {
+                alert("JSME 尚未加载完成");
+            }
+        }
+
+        // Load a sample molecule
+        function loadSample() {
+            if (jsmeApplet) {
+                // Load caffeine molecule (SMILES: CN1C=NC2=C1C(=O)N(C(=O)N2C)C)
+                jsmeApplet.readGenericMolecularInput("CN1C=NC2=C1C(=O)N(C(=O)N2C)C");
+                document.getElementById("output").innerHTML = "<p>示例分子（咖啡因）已加载</p>";
+            } else {
+                alert("JSME 尚未加载完成");
+            }
+        }
+
+        // Load molecule from input textarea
+        function loadMolecule() {
+            if (jsmeApplet) {
+                var input = document.getElementById("inputMolecule").value.trim();
+                if (input) {
+                    try {
+                        jsmeApplet.readGenericMolecularInput(input);
+                        document.getElementById("output").innerHTML = "<p>分子加载成功</p>";
+                    } catch (error) {
+                        document.getElementById("output").innerHTML = 
+                            "<p style='color: red;'>加载分子错误: " + error.message + "</p>";
+                    }
+                } else {
+                    alert("请输入 SMILES 字符串或 MOL 文件内容");
+                }
+            } else {
+                alert("JSME 尚未加载完成");
+            }
+        }
+
+        // Additional utility functions
+        function showInfo() {
+            if (jsmeApplet) {
+                var info = {
+                    "Has molecule": jsmeApplet.smiles() !== "",
+                    "Editor options": jsmeApplet.options(),
+                    "Version info": "JSME Molecule Editor"
+                };
+                
+                var infoText = "";
+                for (var key in info) {
+                    infoText += key + ": " + info[key] + "\n";
+                }
+                
+                document.getElementById("output").innerHTML = 
+                    "<h4>Editor Info:</h4><pre>" + infoText + "</pre>";
+            }
+        }
+
+        // Wait for page to load before initializing
+        window.onload = function() {
+            // Small delay to ensure JSME script is loaded
+            setTimeout(function() {
+                if (typeof JSApplet !== 'undefined') {
+                    jsmeOnLoad();
+                } else {
+                    console.error("JSME failed to load");
+                    document.getElementById("output").innerHTML = 
+                        "<p style='color: red;'>JSME 加载失败，请检查网络连接。</p>";
+                }
+            }, 1000);
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,241 @@
+{
+  "sdmolsupplier": [
+    {
+      "index": 0,
+      "name": " ",
+      "smiles": "COCCCCC(=NOCCN)C1=CC=C(C(F)(F)F)C=C1",
+      "method": "SDMolSupplier"
+    },
+    {
+      "index": 1,
+      "name": "",
+      "smiles": "COC1=CC=C2CC3C4C=CC(O)C5OC1=C2C45CCN3C",
+      "method": "SDMolSupplier"
+    },
+    {
+      "index": 2,
+      "name": "",
+      "smiles": "CCN(CCO)CCCC(C)NC1=CC=NC2=C1C=CC(Cl)=C2",
+      "method": "SDMolSupplier"
+    },
+    {
+      "index": 3,
+      "name": "",
+      "smiles": "COC1OC2OC3(C)CCC4C(C)CCC(C1C)C24OO3",
+      "method": "SDMolSupplier"
+    },
+    {
+      "index": 4,
+      "name": "",
+      "smiles": "CC(N)CC1=CC=CC=C1",
+      "method": "SDMolSupplier"
+    },
+    {
+      "index": 5,
+      "name": "",
+      "smiles": "CCCCN(CCCC)CC(O)C1=CC(Cl)=CC2=C1C1=C(C=C(Cl)C=C1)C2=CC1=CC=C(Cl)C=C1",
+      "method": "SDMolSupplier"
+    },
+    {
+      "index": 6,
+      "name": "",
+      "smiles": "C=CC1CN2CCC1CC2C(O)C1=CC=NC2=CC=C(OC)C=C12",
+      "method": "SDMolSupplier"
+    },
+    {
+      "index": 7,
+      "name": "",
+      "smiles": "CN(C)CCC=C1C2=C(C=CC=C2)CCC2=C1C=CC=C2",
+      "method": "SDMolSupplier"
+    },
+    {
+      "index": 8,
+      "name": "",
+      "smiles": "CCN(CC)C(=O)C1(C2=CC=CC=C2)CC1CN",
+      "method": "SDMolSupplier"
+    },
+    {
+      "index": 9,
+      "name": "",
+      "smiles": "COC1=CC=C(CN(CCN(C)C)C2=NC=CC=C2)C=C1",
+      "method": "SDMolSupplier"
+    },
+    {
+      "index": 10,
+      "name": "",
+      "smiles": "O=C1N=CNC2=C1N=CN2C1CCC(CO)O1",
+      "method": "SDMolSupplier"
+    },
+    {
+      "index": 11,
+      "name": "",
+      "smiles": "NNC(=O)C1=CC=NC=C1",
+      "method": "SDMolSupplier"
+    },
+    {
+      "index": 12,
+      "name": "",
+      "smiles": "OC(CCN1CCCCC1)(C1=CC=CC=C1)C1CCCCC1",
+      "method": "SDMolSupplier"
+    },
+    {
+      "index": 13,
+      "name": "",
+      "smiles": "COC1=CC=C2CC3C4CCCCC4(CCN3C)C2=C1",
+      "method": "SDMolSupplier"
+    },
+    {
+      "index": 14,
+      "name": "",
+      "smiles": "C=C1C(=CC=C2CCCC3(C)C2CCC3C(C)CCCC(C)(C)O)CC(O)CC1O",
+      "method": "SDMolSupplier"
+    },
+    {
+      "index": 15,
+      "name": "",
+      "smiles": "C=C1CCC(O)CC1=CC=C1CCCC2(C)C1CCC2C(C)C=CC(C)C(C)C",
+      "method": "SDMolSupplier"
+    },
+    {
+      "index": 16,
+      "name": "",
+      "smiles": "C=C1CCC(O)CC1=CC=C1CCCC2(C)C1CCC2C(C)CCCC(C)C",
+      "method": "SDMolSupplier"
+    },
+    {
+      "index": 17,
+      "name": "",
+      "smiles": "COC1=CC(=O)CC(C)C12OC1=C(Cl)C(OC)=CC(OC)=C1C2=O",
+      "method": "SDMolSupplier"
+    },
+    {
+      "index": 18,
+      "name": "",
+      "smiles": "C=C1CCC(O)CC1=CC=C1CCCC2(C)C1CCC2C(C)C=CC(C)C(C)C",
+      "method": "SDMolSupplier"
+    },
+    {
+      "index": 19,
+      "name": "",
+      "smiles": "COC1=C2OC3CC(O)C=CC34CCN(C)CC(=C24)C=C1",
+      "method": "SDMolSupplier"
+    }
+  ],
+  "forwardsdmolsupplier": [
+    {
+      "index": 1,
+      "name": "",
+      "smiles": "COC1=CC=C2CC3C4C=CC(O)C5OC1=C2C45CCN3C",
+      "method": "ForwardSDMolSupplier"
+    },
+    {
+      "index": 2,
+      "name": "",
+      "smiles": "CCN(CCO)CCCC(C)NC1=CC=NC2=C1C=CC(Cl)=C2",
+      "method": "ForwardSDMolSupplier"
+    },
+    {
+      "index": 3,
+      "name": "",
+      "smiles": "COC1OC2OC3(C)CCC4C(C)CCC(C1C)C24OO3",
+      "method": "ForwardSDMolSupplier"
+    },
+    {
+      "index": 4,
+      "name": "",
+      "smiles": "CC(N)CC1=CC=CC=C1",
+      "method": "ForwardSDMolSupplier"
+    },
+    {
+      "index": 5,
+      "name": "",
+      "smiles": "CCCCN(CCCC)CC(O)C1=CC(Cl)=CC2=C1C1=C(C=C(Cl)C=C1)C2=CC1=CC=C(Cl)C=C1",
+      "method": "ForwardSDMolSupplier"
+    },
+    {
+      "index": 6,
+      "name": "",
+      "smiles": "C=CC1CN2CCC1CC2C(O)C1=CC=NC2=CC=C(OC)C=C12",
+      "method": "ForwardSDMolSupplier"
+    },
+    {
+      "index": 7,
+      "name": "",
+      "smiles": "CN(C)CCC=C1C2=C(C=CC=C2)CCC2=C1C=CC=C2",
+      "method": "ForwardSDMolSupplier"
+    },
+    {
+      "index": 8,
+      "name": "",
+      "smiles": "CCN(CC)C(=O)C1(C2=CC=CC=C2)CC1CN",
+      "method": "ForwardSDMolSupplier"
+    },
+    {
+      "index": 9,
+      "name": "",
+      "smiles": "COC1=CC=C(CN(CCN(C)C)C2=NC=CC=C2)C=C1",
+      "method": "ForwardSDMolSupplier"
+    },
+    {
+      "index": 10,
+      "name": "",
+      "smiles": "O=C1N=CNC2=C1N=CN2C1CCC(CO)O1",
+      "method": "ForwardSDMolSupplier"
+    },
+    {
+      "index": 11,
+      "name": "",
+      "smiles": "NNC(=O)C1=CC=NC=C1",
+      "method": "ForwardSDMolSupplier"
+    },
+    {
+      "index": 12,
+      "name": "",
+      "smiles": "OC(CCN1CCCCC1)(C1=CC=CC=C1)C1CCCCC1",
+      "method": "ForwardSDMolSupplier"
+    },
+    {
+      "index": 13,
+      "name": "",
+      "smiles": "COC1=CC=C2CC3C4CCCCC4(CCN3C)C2=C1",
+      "method": "ForwardSDMolSupplier"
+    },
+    {
+      "index": 14,
+      "name": "",
+      "smiles": "C=C1C(=CC=C2CCCC3(C)C2CCC3C(C)CCCC(C)(C)O)CC(O)CC1O",
+      "method": "ForwardSDMolSupplier"
+    },
+    {
+      "index": 15,
+      "name": "",
+      "smiles": "C=C1CCC(O)CC1=CC=C1CCCC2(C)C1CCC2C(C)C=CC(C)C(C)C",
+      "method": "ForwardSDMolSupplier"
+    },
+    {
+      "index": 16,
+      "name": "",
+      "smiles": "C=C1CCC(O)CC1=CC=C1CCCC2(C)C1CCC2C(C)CCCC(C)C",
+      "method": "ForwardSDMolSupplier"
+    },
+    {
+      "index": 17,
+      "name": "",
+      "smiles": "COC1=CC(=O)CC(C)C12OC1=C(Cl)C(OC)=CC(OC)=C1C2=O",
+      "method": "ForwardSDMolSupplier"
+    },
+    {
+      "index": 18,
+      "name": "",
+      "smiles": "C=C1CCC(O)CC1=CC=C1CCCC2(C)C1CCC2C(C)C=CC(C)C(C)C",
+      "method": "ForwardSDMolSupplier"
+    },
+    {
+      "index": 19,
+      "name": "",
+      "smiles": "COC1=C2OC3CC(O)C=CC34CCN(C)CC(=C24)C=C1",
+      "method": "ForwardSDMolSupplier"
+    }
+  ],
+  "missing_count": 1
+}

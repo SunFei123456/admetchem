@@ -10,17 +10,25 @@
 
           <!-- 点击选择和计算 -->
           <div class="bg-white rounded-lg border border-slate-200">
-            <div class="bg-gray-200 px-4 py-3    flex items-center">
-              <i class="fas fa-hand-pointer text-gray-600 mr-2"></i>
-              <span class="font-medium text-gray-700">Click to select & calculate</span>
+            <div class="bg-gray-200 px-4 py-3 flex items-center justify-between">
+              <div class="flex items-center">
+                <i class="fas fa-hand-pointer text-gray-600 mr-2"></i>
+                <span class="font-medium text-gray-700">Click to select & calculate</span>
+              </div>
+              <!-- 全选按钮 -->
+              <button @click="toggleSelectAll" class="text-sm px-3 py-1 rounded transition-colors duration-200"
+                :class="isAllSelected ? 'bg-blue-600 text-white hover:bg-blue-700' : 'bg-gray-300 text-gray-700 hover:bg-gray-400'">
+                <i class="fas fa-check-double mr-1"></i>
+                {{ isAllSelected ? '取消全选' : '全选' }}
+              </button>
             </div>
             <div class="p-4 space-y-3">
               <div v-for="rule in rules" :key="rule.id" class="flex items-center">
-                <input type="radio" :id="rule.id" :value="rule.id" v-model="selectedRule"
-                  class="mr-3 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300">
+                <input type="checkbox" :id="rule.id" :value="rule.id" v-model="selectedRules"
+                  class="mr-3 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
                 <label :for="rule.id" :class="[
                   'cursor-pointer text-sm transition-colors duration-200',
-                  selectedRule === rule.id
+                  selectedRules.includes(rule.id)
                     ? 'text-blue-800 font-semibold'
                     : 'text-blue-600 hover:text-blue-800'
                 ]">
@@ -30,41 +38,30 @@
             </div>
           </div>
 
-          <!-- 详细信息 -->
-          <div class="bg-white rounded-lg border border-slate-200">
-            <div class="bg-gray-200 px-4 py-3    flex items-center">
-              <i class="fas fa-info-circle text-gray-600 mr-2"></i>
-              <span class="font-medium text-gray-700">Detailed information</span>
-            </div>
-            <div class="p-4">
-
-              <!-- 模型性能表 -->
-              <div class="mb-6">
-                <h4 class="font-semibold mb-3 text-left">Rule Details</h4>
-                <div class="overflow-x-auto">
-                  <table class="w-full text-sm border border-gray-300">
-                    <tbody>
-                      <tr v-for="(item, index) in modelPerformance" :key="index" class="border border-gray-200">
-                        <td class="px-3 py-2 bg-gray-50 font-medium text-gray-700 border-r border-gray-300">
-                          {{ item.label }}</td>
-                        <td class="px-3 py-2 text-gray-900 whitespace-pre-line">{{ item.value }}</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-
-
-            </div>
-          </div>
         </div>
 
         <!-- 右侧：输入方式 -->
         <div class="lg:col-span-2 space-y-6">
 
-          <!-- 输入 SMILES -->
-          <div class="bg-white rounded-lg    border border-slate-200">
-            <div class="bg-gray-200 px-4 py-3    flex items-center">
+          <!-- 选择数据源 -->
+          <div class="bg-white rounded-lg border border-slate-200">
+            <div class="bg-gray-200 px-4 py-3 flex items-center">
+              <i class="fas fa-database text-gray-600 mr-2"></i>
+              <span class="font-medium text-gray-700">Select the Data Source</span>
+            </div>
+            <div class="p-4">
+              <select v-model="dataSource"
+                class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <option value="smiles">By Inputting SMILES</option>
+                <option value="file">By Uploading File</option>
+                <option value="editor">By Drawing Molecule from the Editor</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- 输入 SMILES - 仅当选择 SMILES 时显示 -->
+          <div v-if="dataSource === 'smiles'" class="bg-white rounded-lg border border-slate-200">
+            <div class="bg-gray-200 px-4 py-3 flex items-center">
               <i class="fas fa-keyboard text-gray-600 mr-2"></i>
               <span class="font-medium text-gray-700">By inputting SMILES</span>
             </div>
@@ -82,9 +79,9 @@
             </div>
           </div>
 
-          <!-- 上传文件 -->
-          <div class="bg-white rounded-lg    border border-slate-200">
-            <div class="bg-gray-200 px-4 py-3    flex items-center justify-between">
+          <!-- 上传文件 - 仅当选择文件时显示 -->
+          <div v-if="dataSource === 'file'" class="bg-white rounded-lg border border-slate-200">
+            <div class="bg-gray-200 px-4 py-3 flex items-center justify-between">
               <div class="flex items-center">
                 <i class="fas fa-upload text-gray-600 mr-2"></i>
                 <span class="font-medium text-gray-700">By Uploading Files (*.sdf)</span>
@@ -120,30 +117,14 @@
             </div>
           </div>
 
-          <!-- 分子编辑器 -->
-          <div class="bg-white rounded-lg border border-slate-200">
+          <!-- 分子编辑器 - 仅当选择编辑器时显示 -->
+          <div v-if="dataSource === 'editor'" class="bg-white rounded-lg border border-slate-200">
             <div class="bg-gray-200 px-4 py-3 flex items-center">
               <i class="fas fa-draw-polygon text-gray-600 mr-2"></i>
               <span class="font-medium text-gray-700">By Drawing Molecule from Editor Below</span>
             </div>
             <div class="p-4">
               <MolecularEditor @smiles-generated="handleSmilesGenerated" />
-            </div>
-          </div>
-
-          <!-- 选择数据源 -->
-          <div class="bg-white rounded-lg    border border-slate-200">
-            <div class="bg-gray-200 px-4 py-3    flex items-center">
-              <i class="fas fa-database text-gray-600 mr-2"></i>
-              <span class="font-medium text-gray-700">Select the Data Source</span>
-            </div>
-            <div class="p-4">
-              <select v-model="dataSource"
-                class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
-                <option value="smiles">By Inputting SMILES</option>
-                <option value="file">By Uploading File</option>
-                <option value="editor">By Drawing Molecule from the Editor</option>
-              </select>
             </div>
           </div>
 
@@ -193,45 +174,32 @@ const rules = ref([
   { id: 'ghose', name: "Ghose's rules" },
   { id: 'oprea', name: "Oprea's rules" },
   { id: 'veber', name: "Veber's rules" },
-  { id: 'varma', name: "Varma's rules" }
+  { id: 'varma', name: "Varma's rules" },
+  { id: 'qed', name: "QED" },
+  { id: 'sascore', name: "SAscore" },
+  { id: 'fsp3', name: "Fsp3" },
+  { id: 'mce18', name: "MCE18" },
+  { id: 'npscore', name: "NPscore" }
 ])
 
-// 选中的规则
+// 选中的规则（多选）
+const selectedRules = ref(['lipinski'])
+// 保留单选变量以兼容现有逻辑
 const selectedRule = ref('lipinski')
 
-// 不同规则的模型性能数据
-const rulePerformanceData = {
-  lipinski: [
-    { label: 'Rule name', value: "Lipinski's rules" },
-    { label: 'Content', value: 'MW<=500;\nlogP<=5;\nHacc<=10;\nHdon<=5' },
-    { label: 'Reference', value: 'Adv Drug Deliver Rev, 2001, 46(1-3):3-26.' }
-  ],
-  ghose: [
-    { label: 'Rule name', value: "Ghose's rules" },
-    { label: 'Content', value: '- 5.6< MclogP < -0.4\nmean: 2.52;\n160 < MW < 480\nmean: 357;\n40 < MR < 130\nmean: 97;\n20 < natoms < 70\nmean: 48' },
-    { label: 'Reference', value: 'J Comb Chem, 1999, 1(1):55-68.' }
-  ],
-  oprea: [
-    { label: 'Rule name', value: "Oprea's rules" },
-    { label: 'Content', value: 'nrings>=3;\nrigidbonds>=18;\nnRotbond>6' },
-    { label: 'Reference', value: 'J Comput Aid Mol Des, 2000, 14(3):251-64.' }
-  ],
-  veber: [
-    { label: 'Rule name', value: "Veber's rules" },
-    { label: 'Content', value: 'nRotbond<=10;\ntPSA<= 140 or\nHacc and Hdon<=12' },
-    { label: 'Reference', value: 'J Med Chem, 2002, 45(12):2615-23.' }
-  ],
-  varma: [
-    { label: 'Rule name', value: "Varma's rules" },
-    { label: 'Content', value: 'MW<= 500;\nTPSA<=125;\n-5< logD < = 2;\nHacc+Hdon<=9;\nnRotbond<=12' },
-    { label: 'Reference', value: 'J Med Chem, 2010, 53(3):1098-108.' }
-  ]
-}
-
-// 计算属性：当前选中规则的性能数据
-const modelPerformance = computed(() => {
-  return rulePerformanceData[selectedRule.value] || rulePerformanceData.lipinski
+// 计算属性：是否全选
+const isAllSelected = computed(() => {
+  return selectedRules.value.length === rules.value.length
 })
+
+// 全选/取消全选功能
+const toggleSelectAll = () => {
+  if (isAllSelected.value) {
+    selectedRules.value = []
+  } else {
+    selectedRules.value = rules.value.map(rule => rule.id)
+  }
+}
 
 // 表单数据
 const smilesInput = ref('')
@@ -248,7 +216,12 @@ const ruleMapping = {
   'ghose': 'Ghose',
   'oprea': 'Oprea',
   'veber': 'Veber',
-  'varma': 'Varma'
+  'varma': 'Varma',
+  'qed': 'QED',
+  'sascore': 'SAscore',
+  'fsp3': 'Fsp3',
+  'mce18': 'MCE18',
+  'npscore': 'NPscore'
 }
 
 // 验证用户输入
@@ -410,6 +383,7 @@ const resetForm = () => {
   smilesInput.value = ''
   dataSource.value = 'smiles'
   selectedRule.value = 'lipinski'
+  selectedRules.value = ['lipinski']
   uploadedFile.value = null
   if (fileInput.value) {
     fileInput.value.value = ''
@@ -540,32 +514,13 @@ const loadExample = (type) => {
   }
 }
 
-// 分子编辑器元素
-const elements = ref(['C', 'N', 'O', 'S', 'P', 'Cl', 'Br', 'I', 'X'])
 
-// 获取元素颜色
-const getElementColor = (element) => {
-  const colors = {
-    'C': 'text-black bg-gray-200',
-    'N': 'text-blue-600 bg-blue-100',
-    'O': 'text-red-600 bg-red-100',
-    'S': 'text-yellow-600 bg-yellow-100',
-    'P': 'text-purple-600 bg-purple-100',
-    'Cl': 'text-green-600 bg-green-100',
-    'Br': 'text-orange-600 bg-orange-100',
-    'I': 'text-indigo-600 bg-indigo-100',
-    'X': 'text-gray-600 bg-gray-200'
-  }
-  return colors[element] || 'text-gray-600 bg-gray-200'
-}
+
 
 // 分子编辑器事件处理
 const handleSmilesGenerated = (smiles) => {
   smilesInput.value = smiles
   dataSource.value = 'editor'
-
-
-
   console.log('Generated SMILES from editor:', smiles)
 }
 

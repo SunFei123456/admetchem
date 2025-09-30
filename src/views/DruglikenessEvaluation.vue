@@ -164,7 +164,7 @@ import { useRouter } from 'vue-router'
 import MolecularEditor from '@/components/MolecularEditor.vue'
 import { storeResultData } from '@/utils/storage.js'
 import message from '@/utils/message.js'
-import { evaluateSmiles, analyzeSdfFile } from '@/api'
+import { evaluateSmiles, evaluateComprehensive, analyzeSdfFile } from '@/api'
 
 const router = useRouter()
 
@@ -210,7 +210,7 @@ const fileInput = ref(null)
 // API相关状态
 const isLoading = ref(false)
 
-// 规则ID到API规则名称的映射
+// 规则ID到API规则名称的映射（前端小写ID -> 后端大写格式）
 const ruleMapping = {
   'lipinski': 'Lipinski',
   'ghose': 'Ghose',
@@ -224,13 +224,18 @@ const ruleMapping = {
   'npscore': 'NPscore'
 }
 
+// 将前端选择的规则ID列表转换为API格式
+const mapSelectedRulesToAPI = (selectedIds) => {
+  return selectedIds.map(id => ruleMapping[id]).filter(Boolean)
+}
+
 // 验证用户输入
 const validateInput = () => {
-  // 检查是否选择了规则
-  if (!selectedRule.value) {
+  // 检查是否选择了至少一个规则
+  if (!selectedRules.value || selectedRules.value.length === 0) {
     message.warning({
       title: '输入提示',
-      message: '请选择一个药物相似性规则进行评估',
+      message: '请至少选择一个评估项目',
       duration: 4000
     })
     return false
@@ -300,23 +305,28 @@ const evaluateFromSmiles = async () => {
     throw new Error('请输入有效的SMILES字符串')
   }
 
-  // 调用 API
-  const result = await evaluateSmiles({
+  // 将前端选择的规则ID转换为API格式
+  const selectedItems = mapSelectedRulesToAPI(selectedRules.value)
+
+  console.log('选择的评估项目:', selectedItems)
+
+  // 调用新版综合评估 API
+  const result = await evaluateComprehensive({
     smiles: smiles,
-    rules: [ruleMapping[selectedRule.value]]
+    selected_items: selectedItems
   })
 
   // 显示成功消息
   message.success({
     title: '评估成功',
-    message: 'SMILES分子评估完成，正在跳转到结果页面...',
+    message: `已完成 ${selectedItems.length} 个项目的评估，正在跳转到结果页面...`,
     duration: 2000
   })
 
   // 使用存储工具函数存储数据
   const resultKey = storeResultData({
     data: result.data,
-    rule: ruleMapping[selectedRule.value],
+    selectedItems: selectedItems,
     source: 'smiles'
   })
 

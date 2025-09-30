@@ -50,16 +50,51 @@ class DruglikenessRequest(BaseModel):
     """类药性评估请求模型"""
 
     smiles: str
-    rules: Optional[List[str]] = None  # 可选的规则列表，如果为空则返回所有规则
+    rules: Optional[List[str]] = None  # 已废弃，保留向后兼容
+    selected_items: Optional[List[str]] = None  # 新版：用户选择的项目列表（规则+性质）
+    
+    class Config:
+        json_schema_extra = {
+            "example": {
+                "smiles": "CC(C)Cc1ccc(cc1)C(C)C(=O)O",
+                "selected_items": ["Lipinski", "QED", "SAscore"]
+            }
+        }
 
 
 class DruglikenessResponse(BaseModel):
-    """类药性评估响应模型"""
+    """类药性评估响应模型（向后兼容旧版API）"""
 
     metrics: Dict[str, Dict[str, float]]
     matches: Dict[str, float]
     # total_score: float  # 暂时注释掉
     smiles: str
+
+
+class ComprehensiveEvaluationResponse(BaseModel):
+    """综合评估响应模型（新版API）"""
+    
+    selected_items: List[str]  # 用户选择的项目
+    druglikeness_rules: Optional[Dict[str, Any]] = None  # 类药性规则结果
+    molecular_properties: Optional[Dict[str, Any]] = None  # 分子性质结果
+    smiles: str
+    
+    class Config:
+        json_schema_extra = {
+            "example": {
+                "selected_items": ["Lipinski", "QED", "SAscore"],
+                "druglikeness_rules": {
+                    "metrics": {"Lipinski": {"mw": 206.28, "logp": 3.5}},
+                    "matches": {"Lipinski": 1.0},
+                    "total_score": 1.0
+                },
+                "molecular_properties": {
+                    "QED": 0.82,
+                    "QED_status": "excellent"
+                },
+                "smiles": "CC(C)Cc1ccc(cc1)C(C)C(=O)O"
+            }
+        }
 
 
 class SdfToSmilesResponse(BaseModel):

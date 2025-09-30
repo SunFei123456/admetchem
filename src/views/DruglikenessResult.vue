@@ -15,110 +15,40 @@
         <!-- 标题栏 -->
         <div class="bg-green-500 text-white px-4 py-3 flex items-center">
           <i class="fas fa-check-circle mr-2"></i>
-          <span class="font-medium">{{ selectedRuleName }}</span>
+          <span class="font-medium">Result</span>
         </div>
 
-        <!-- 分页控制 -->
-        <div class="p-4 border-b border-gray-200 flex justify-between items-center">
-          <div class="flex items-center space-x-2">
-            <select v-model="pageSize" @change="currentPage = 1" class="border border-gray-300 rounded px-2 py-1 text-sm">
-              <option value="10">10</option>
-              <option value="20">20</option>
-              <option value="50">50</option>
-              <option value="100">100</option>
-            </select>
-            <span class="text-sm text-gray-600">records per page</span>
-          </div>
-          <div class="flex items-center space-x-4" v-if="dataSource === 'file'">
-            <div class="flex items-center space-x-2">
-              <span class="text-sm text-gray-600">Search:</span>
-              <input v-model="searchQuery" @input="currentPage = 1" type="text" class="border border-gray-300 rounded px-2 py-1 text-sm" placeholder="Search SMILES...">
-              <button v-if="searchQuery.trim()" @click="clearSearch" class="text-blue-600 hover:text-blue-800 text-sm">
-                <i class="fas fa-times"></i>
-              </button>
-            </div>
-            <div class="flex items-center space-x-2" v-if="sortField">
-              <span class="text-sm text-gray-600">Sorted by: {{ tableHeaders[sortField] || (sortField === 'smiles' ? 'Molecule' : sortField === 'matches' ? 'Matches' : sortField) }}</span>
-              <button @click="clearSort" class="text-blue-600 hover:text-blue-800 text-sm">
-                <i class="fas fa-times"></i> Clear
-              </button>
-            </div>
-          </div>
-        </div>
 
         <!-- 结果表格 -->
         <div class="overflow-x-auto">
-          <table class="w-full table-fixed">
+          <table class="w-full">
             <thead class="bg-gray-50">
               <tr>
-                <th class="w-80 px-4 py-3 text-left text-sm font-medium text-gray-700 border-b">
-                  <div class="flex items-center cursor-pointer hover:text-blue-600" 
-                       @click="dataSource === 'file' && sortBy('smiles')">
-                    Molecule
-                    <i :class="dataSource === 'file' ? getSortIcon('smiles') : 'fas fa-sort text-gray-400'" class="ml-1"></i>
-                  </div>
+                <th class="px-4 py-3 text-left text-sm font-medium text-gray-700 border-b min-w-[300px]">
+                  Molecule
                 </th>
-                <th v-for="(header, key) in tableHeaders" :key="key" 
-                    class="w-32 px-4 py-3 text-left text-sm font-medium text-gray-700 border-b">
-                  <div class="flex items-center cursor-pointer hover:text-blue-600" 
-                       @click="dataSource === 'file' && sortBy(key)">
-                    {{ header }}
-                    <i :class="dataSource === 'file' ? getSortIcon(key) : 'fas fa-sort text-gray-400'" class="ml-1"></i>
-                  </div>
-                </th>
-                <th class="w-24 px-4 py-3 text-left text-sm font-medium text-gray-700 border-b">
-                  <div class="flex items-center cursor-pointer hover:text-blue-600" 
-                       @click="dataSource === 'file' && sortBy('matches')">
-                    Matches
-                    <i :class="dataSource === 'file' ? getSortIcon('matches') : 'fas fa-sort text-gray-400'" class="ml-1"></i>
-                  </div>
+                <th v-for="header in tableHeaders" :key="header.key"
+                  class="px-4 py-3 text-left text-sm font-medium text-gray-700 border-b whitespace-nowrap">
+                  {{ header.label }}
                 </th>
               </tr>
             </thead>
             <tbody>
               <!-- 单个分子结果（SMILES输入） -->
               <tr v-if="dataSource === 'smiles'" class="border-b border-gray-200 hover:bg-gray-50">
-                <td class="w-80 px-4 py-3">
+                <td class="px-4 py-3">
                   <div class="flex items-center">
-                    <button class="text-blue-600 hover:text-blue-800 mr-2">
-                      <i class="fas fa-plus-square"></i>
-                    </button>
-                    <span class="font-mono text-sm truncate">{{ resultData?.smiles || 'N/A' }}</span>
+                    <span class="font-mono text-sm break-all">{{ resultData?.smiles || 'N/A' }}</span>
                   </div>
                 </td>
-                <td v-for="(value, key) in currentMetrics" :key="key" class="w-32 px-4 py-3 text-sm">
-                  {{ typeof value === 'number' ? (Math.floor(value * 100) / 100).toString() : value }}
-                </td>
-                <td class="w-24 px-4 py-3">
-                  <span class="bg-blue-500 text-white px-2 py-1 rounded text-sm font-medium">
-                    {{ currentMatchPercentage }}%
-                  </span>
+                <td v-for="rowValue in getRowValues" :key="rowValue.key" class="px-4 py-3 text-sm whitespace-nowrap">
+                  {{ rowValue.value }}
                 </td>
               </tr>
-              
-              <!-- 多个分子结果（SDF文件上传） -->
-              <tr v-for="(item, index) in paginatedItems" :key="index" class="border-b border-gray-200 hover:bg-gray-50">
-                <td class="w-80 px-4 py-3">
-                  <div class="flex items-center">
-                    <button class="text-blue-600 hover:text-blue-800 mr-2">
-                      <i class="fas fa-plus-square"></i>
-                    </button>
-                    <span class="font-mono text-sm truncate">{{ item.smiles }}</span>
-                  </div>
-                </td>
-                <td v-for="(value, key) in item.metrics[selectedRule]" :key="key" class="w-32 px-4 py-3 text-sm">
-                  {{ typeof value === 'number' ? (Math.floor(value * 100) / 100).toString() : value }}
-                </td>
-                <td class="w-24 px-4 py-3">
-                  <span class="bg-blue-500 text-white px-2 py-1 rounded text-sm font-medium">
-                    {{ (item.matches[selectedRule] * 100).toFixed(2) }}%
-                  </span>
-                </td>
-              </tr>
-              
+
               <!-- 无数据提示 -->
-              <tr v-if="(dataSource === 'file' && paginatedItems.length === 0) || (dataSource === 'smiles' && !resultData)">
-                <td :colspan="Object.keys(tableHeaders).length + 2" class="px-4 py-8 text-center text-gray-500">
+              <tr v-if="!resultData">
+                <td :colspan="tableHeaders.length + 1" class="px-4 py-8 text-center text-gray-500">
                   暂无数据
                 </td>
               </tr>
@@ -129,62 +59,20 @@
         <!-- 分页信息 -->
         <div class="p-4 border-t border-gray-200 flex justify-between items-center">
           <div class="text-sm text-gray-600">
-            <span v-if="dataSource === 'smiles'">
-              Showing 1 to 1 of 1 entries
-            </span>
-            <span v-else>
-              Showing {{ showingStart }} to {{ showingEnd }} of {{ totalItems }} entries
-              <span v-if="searchQuery.trim()">(filtered from {{ resultData?.items?.length || 0 }} total entries)</span>
-            </span>
-          </div>
-          <div class="flex items-center space-x-2" v-if="dataSource === 'file' && totalPages > 1">
-            <button @click="currentPage = Math.max(1, currentPage - 1)" 
-                    :disabled="currentPage === 1"
-                    :class="currentPage === 1 ? 'text-gray-500 cursor-not-allowed' : 'text-blue-600 hover:text-blue-800'"
-                    class="px-3 py-1 border border-gray-300 rounded text-sm">
-              ← Previous
-            </button>
-            
-            <!-- 页码显示 -->
-            <template v-for="page in Math.min(totalPages, 5)" :key="page">
-              <button v-if="page <= totalPages" 
-                      @click="currentPage = page"
-                      :class="currentPage === page ? 'bg-blue-500 text-white' : 'text-blue-600 hover:text-blue-800'"
-                      class="px-3 py-1 border border-gray-300 rounded text-sm">
-                {{ page }}
-              </button>
-            </template>
-            
-            <span v-if="totalPages > 5" class="px-2 text-gray-500">...</span>
-            
-            <button @click="currentPage = Math.min(totalPages, currentPage + 1)" 
-                    :disabled="currentPage === totalPages"
-                    :class="currentPage === totalPages ? 'text-gray-500 cursor-not-allowed' : 'text-blue-600 hover:text-blue-800'"
-                    class="px-3 py-1 border border-gray-300 rounded text-sm">
-              Next →
-            </button>
-          </div>
-          <div v-else-if="dataSource === 'smiles'" class="flex items-center space-x-2">
-            <button class="px-3 py-1 border border-gray-300 rounded text-sm text-gray-500 cursor-not-allowed">
-              ← Previous
-            </button>
-            <span class="px-3 py-1 bg-blue-500 text-white rounded text-sm">1</span>
-            <button class="px-3 py-1 border border-gray-300 rounded text-sm text-gray-500 cursor-not-allowed">
-              Next →
-            </button>
+            Showing 1 entry
           </div>
         </div>
       </div>
 
       <!-- 操作按钮 -->
       <div class="mt-6 text-center space-x-4">
-        <button @click="exportToCSV" 
-                class="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700 transition duration-200">
+        <button @click="exportToCSV"
+          class="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700 transition duration-200">
           <i class="fas fa-download mr-2"></i>
           导出CSV
         </button>
-        <button @click="goBack" 
-                class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition duration-200">
+        <button @click="goBack"
+          class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition duration-200">
           <i class="fas fa-arrow-left mr-2"></i>
           返回评估页面
         </button>
@@ -196,7 +84,6 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import Breadcrumb from '@/components/Breadcrumb.vue'
 import * as XLSX from 'xlsx'
 import { getResultData, removeResultData, cleanupExpiredData } from '../utils/storage.js'
 
@@ -207,203 +94,106 @@ const router = useRouter()
 
 // 结果数据
 const resultData = ref(null)
-const selectedRule = ref('')
+const selectedItems = ref([]) // 用户选择的评估项目
 const dataSource = ref('smiles') // 'smiles' 或 'file'
-const currentPage = ref(1)
-const pageSize = ref(10)
-const searchQuery = ref('')
 
-// 排序状态
-const sortField = ref('')
-const sortDirection = ref('asc') // 'asc' 或 'desc'
+// 分子性质名称映射
+const propertyNameMapping = {
+  'QED': 'QED',
+  'SAscore': 'SAscore',
+  'Fsp3': 'Fsp3',
+  'MCE18': 'MCE18',
+  'NPscore': 'NPscore'
+}
 
-// 规则名称映射
+// 规则名称映射（用于matches列）
 const ruleNameMapping = {
-  'Lipinski': "Lipinski's rules",
-  'Ghose': "Ghose's rules",
-  'Oprea': "Oprea's rules",
-  'Veber': "Veber's rules",
-  'Varma': "Varma's rules"
+  'Lipinski': 'Lipinski Match',
+  'Ghose': 'Ghose Match',
+  'Oprea': 'Oprea Match',
+  'Veber': 'Veber Match',
+  'Varma': 'Varma Match'
 }
 
-// 表格头部映射
-const tableHeaderMapping = {
-  'Lipinski': {
-    'mw': 'Molecular weight',
-    'logp': 'LogP',
-    'hbd': 'H-bond donors',
-    'hba': 'H-bond acceptors'
-  },
-  'Ghose': {
-    'mw': 'Molecular weight',
-    'logp': 'LogP',
-    'mr': 'Molar refractivity',
-    'atom_count': 'Total number of atoms'
-  },
-  'Oprea': {
-    'rot_bonds': 'Rotatable bonds',
-    'rigid_bonds': 'Rigid bonds',
-    'ring_count': 'Ring count'
-  },
-  'Veber': {
-    'rot_bonds': 'Rotatable bonds',
-    'tpsa': 'TPSA',
-    'hbd': 'H-bond donors',
-    'hba': 'H-bond acceptors'
-  },
-  'Varma': {
-    'molecular_weight': 'Molecular weight',
-    'tpsa': 'TPSA',
-    'logd': 'LogD',
-    'h_bond_donor': 'H-bond donors',
-    'h_bond_acceptor': 'H-bond acceptors',
-    'rotatable_bonds': 'Rotatable bonds'
-  }
-}
-
-// 计算属性
-const selectedRuleName = computed(() => {
-  return ruleNameMapping[selectedRule.value] || selectedRule.value
-})
-
+// 计算属性：动态生成表头 --> 数据来源于从接口返回中进行提取
 const tableHeaders = computed(() => {
-  return tableHeaderMapping[selectedRule.value] || {}
-})
+  const headers = []
 
-// 处理单个分子数据（SMILES输入）
-const currentMetrics = computed(() => {
-  if (dataSource.value === 'smiles') {
-    if (!resultData.value?.metrics || !selectedRule.value) return {}
-    return resultData.value.metrics[selectedRule.value] || {}
-  }
-  return {}
-})
-
-const currentMatchPercentage = computed(() => {
-  if (dataSource.value === 'smiles') {
-    if (!resultData.value?.matches || !selectedRule.value) return '0.00'
-    const match = resultData.value.matches[selectedRule.value] || 0
-    return (match * 100).toFixed(2)
-  }
-  return '0.00'
-})
-
-// 排序函数
-const sortBy = (field) => {
-  if (sortField.value === field) {
-    // 如果点击的是同一个字段，切换排序方向
-    sortDirection.value = sortDirection.value === 'asc' ? 'desc' : 'asc'
-  } else {
-    // 如果点击的是新字段，设置为升序
-    sortField.value = field
-    sortDirection.value = 'asc'
-  }
-  currentPage.value = 1 // 重置到第一页
-}
-
-// 获取排序图标
-const getSortIcon = (field) => {
-  if (sortField.value !== field) {
-    return 'fas fa-sort text-gray-400'
-  }
-  return sortDirection.value === 'asc' ? 'fas fa-sort-up text-blue-600' : 'fas fa-sort-down text-blue-600'
-}
-
-// 处理多个分子数据（SDF文件上传）
-const filteredItems = computed(() => {
-  if (dataSource.value !== 'file' || !resultData.value?.items) return []
-  
-  let items = [...resultData.value.items]
-  
-  // 搜索过滤
-  if (searchQuery.value.trim()) {
-    const query = searchQuery.value.toLowerCase()
-    items = items.filter(item => 
-      item.smiles.toLowerCase().includes(query)
-    )
-  }
-  
-  // 排序
-  if (sortField.value) {
-    items.sort((a, b) => {
-      let valueA, valueB
-      
-      if (sortField.value === 'smiles') {
-        valueA = a.smiles
-        valueB = b.smiles
-      } else if (sortField.value === 'matches') {
-        valueA = a.matches[selectedRule.value] || 0
-        valueB = b.matches[selectedRule.value] || 0
-      } else {
-        // 其他字段从metrics中获取
-        valueA = a.metrics[selectedRule.value]?.[sortField.value] || 0
-        valueB = b.metrics[selectedRule.value]?.[sortField.value] || 0
+  // 添加分子性质列
+  if (resultData.value?.molecular_properties) {
+    const props = resultData.value.molecular_properties
+    // 遍历所有分子性质，只显示值，不显示status
+    Object.keys(props).forEach(key => {
+      if (!key.endsWith('_status') && !key.endsWith('_error')) {
+        headers.push({
+          key: key,
+          label: propertyNameMapping[key] || key,
+          type: 'property'
+        })
       }
-      
-      // 处理字符串和数字比较
-      if (typeof valueA === 'string' && typeof valueB === 'string') {
-        valueA = valueA.toLowerCase()
-        valueB = valueB.toLowerCase()
-      }
-      
-      if (valueA < valueB) {
-        return sortDirection.value === 'asc' ? -1 : 1
-      }
-      if (valueA > valueB) {
-        return sortDirection.value === 'asc' ? 1 : -1
-      }
-      return 0
     })
   }
-  
-  return items
+
+  // 添加规则matches列
+  if (resultData.value?.druglikeness_rules?.matches) {
+    const matches = resultData.value.druglikeness_rules.matches
+    Object.keys(matches).forEach(ruleName => {
+      headers.push({
+        key: ruleName,
+        label: ruleNameMapping[ruleName] || `${ruleName} Match`,
+        type: 'match'
+      })
+    })
+  }
+
+  return headers
 })
 
-const paginatedItems = computed(() => {
-  const start = (currentPage.value - 1) * pageSize.value
-  const end = start + pageSize.value
-  return filteredItems.value.slice(start, end)
+// 根据KEY 获取单行数据的值
+const getRowValues = computed(() => {
+  if (!resultData.value) return []
+
+  const values = []
+
+  tableHeaders.value.forEach(header => {
+    if (header.type === 'property') {
+      // 分子性质
+      const value = resultData.value.molecular_properties?.[header.key]
+      values.push({
+        key: header.key,
+        value: value != null ? (typeof value === 'number' ? value.toFixed(4) : value) : 'N/A'
+      })
+    } else if (header.type === 'match') {
+      // 规则匹配度
+      const matchValue = resultData.value.druglikeness_rules?.matches?.[header.key]
+      values.push({
+        key: header.key,
+        value: matchValue != null ? (matchValue * 100).toFixed(2) + '%' : 'N/A'
+      })
+    }
+  })
+
+  return values
 })
 
-const totalPages = computed(() => {
-  return Math.ceil(filteredItems.value.length / pageSize.value)
-})
-
-const totalItems = computed(() => {
-  return filteredItems.value.length
-})
-
-const showingStart = computed(() => {
-  return Math.min((currentPage.value - 1) * pageSize.value + 1, totalItems.value)
-})
-
-const showingEnd = computed(() => {
-  return Math.min(currentPage.value * pageSize.value, totalItems.value)
-})
 
 // 页面初始化
 onMounted(() => {
   // 清理过期数据
   cleanupExpiredData()
-  
+
   // 从sessionStorage中获取结果数据
   const resultId = route.query.resultId
-  
+
   if (resultId) {
     const parsedData = getResultData(resultId)
-    
+
     if (parsedData) {
       // 设置数据
       resultData.value = parsedData.data
-      selectedRule.value = parsedData.rule || 'Lipinski'
+      selectedItems.value = parsedData.selectedItems || []
       dataSource.value = parsedData.source || 'smiles'
-      
-      // 如果是文件上传结果，重置分页
-      if (dataSource.value === 'file') {
-        currentPage.value = 1
-        searchQuery.value = ''
-      }
-      
+
       // 清理URL，移除resultId参数
       router.replace({ path: '/druglikeness-result' })
     } else {
@@ -416,8 +206,6 @@ onMounted(() => {
   }
 })
 
-// 注意：cleanupExpiredData 函数现在从 storage.js 导入
-
 // 返回评估页面
 const goBack = () => {
   // 清理当前结果数据
@@ -425,39 +213,11 @@ const goBack = () => {
   if (resultId) {
     removeResultData(resultId)
   }
-  
+
   // 清理过期数据
   cleanupExpiredData()
-  
+
   router.push('/druglikeness-evaluation')
-}
-
-// 分页相关函数
-const goToPage = (page) => {
-  if (page >= 1 && page <= totalPages.value) {
-    currentPage.value = page
-  }
-}
-
-const goToFirstPage = () => {
-  currentPage.value = 1
-}
-
-const goToLastPage = () => {
-  currentPage.value = totalPages.value
-}
-
-// 搜索重置
-const clearSearch = () => {
-  searchQuery.value = ''
-  currentPage.value = 1
-}
-
-// 清除排序
-const clearSort = () => {
-  sortField.value = ''
-  sortDirection.value = 'asc'
-  currentPage.value = 1
 }
 
 // 导出CSV功能
@@ -469,47 +229,30 @@ const exportToCSV = () => {
 
   // 准备导出数据
   const exportData = []
-  
+
   // 添加标题行
-  const headers = ['Molecule', ...Object.values(tableHeaders.value), 'Matches (%)']
+  const headers = ['Molecule', ...tableHeaders.value.map(h => h.label)]
   exportData.push(headers)
-  
-  if (dataSource.value === 'smiles') {
-    // 单个分子数据
-    const dataRow = [
-      resultData.value.smiles || 'N/A',
-      ...Object.values(currentMetrics.value).map(value => 
-        typeof value === 'number' ? (Math.floor(value * 100) / 100).toString() : value
-      ),
-      currentMatchPercentage.value + '%'
-    ]
-    exportData.push(dataRow)
-  } else if (dataSource.value === 'file') {
-    // 多个分子数据（导出所有数据，不仅仅是当前页）
-    filteredItems.value.forEach(item => {
-      const dataRow = [
-        item.smiles,
-        ...Object.values(item.metrics[selectedRule.value]).map(value => 
-          typeof value === 'number' ? (Math.floor(value * 100) / 100).toString() : value
-        ),
-        (item.matches[selectedRule.value] * 100).toFixed(2) + '%'
-      ]
-      exportData.push(dataRow)
-    })
-  }
-  
+
+  // 添加数据行
+  const dataRow = [
+    resultData.value.smiles || 'N/A',
+    ...getRowValues.value.map(v => v.value)
+  ]
+  exportData.push(dataRow)
+
   // 创建工作表
   const ws = XLSX.utils.aoa_to_sheet(exportData)
-  
+
   // 创建工作簿
   const wb = XLSX.utils.book_new()
-  XLSX.utils.book_append_sheet(wb, ws, 'Druglikeness Results')
-  
+  XLSX.utils.book_append_sheet(wb, ws, 'Evaluation Results')
+
   // 生成文件名
   const timestamp = new Date().toISOString().slice(0, 19).replace(/:/g, '-')
-  const sourceType = dataSource.value === 'file' ? 'batch' : 'single'
-  const filename = `druglikeness_${selectedRule.value}_${sourceType}_${timestamp}.csv`
-  
+  const itemsCount = selectedItems.value.length
+  const filename = `evaluation_results_${itemsCount}items_${timestamp}.csv`
+
   // 导出文件
   XLSX.writeFile(wb, filename)
 }

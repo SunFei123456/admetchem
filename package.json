@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.7.2",
+    "axios": "^1.12.2",
     "jsme-editor": "^2024.4.29",
     "vue": "^3.5.17",
     "vue-router": "^4.5.1",

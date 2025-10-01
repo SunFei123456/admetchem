@@ -36,10 +36,12 @@ export function evaluateComprehensive(data) {
 }
 
 /**
- * 分析 SDF 文件的药物相似性
+ * 分析 SDF 文件的药物相似性（支持综合评估）
  * @param {FormData} formData - 包含文件的 FormData
  * @param {Object} params - 查询参数
- * @param {string} params.selected_rule - 选择的规则
+ * @param {string} params.selected_items - 选择的评估项目，用逗号分隔
+ *   - 类药性规则: 'Lipinski', 'Ghose', 'Oprea', 'Veber', 'Varma'
+ *   - 分子性质: 'QED', 'SAscore', 'Fsp3', 'MCE18', 'NPscore'
  * @param {boolean} params.isomeric_smiles - 是否保留立体化学信息
  * @param {boolean} params.kekule_smiles - 是否使用凯库勒式
  * @param {boolean} params.canonical - 是否标准化

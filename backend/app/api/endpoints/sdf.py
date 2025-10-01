@@ -70,12 +70,14 @@ async def analyze_sdf_druglikeness(
     isomeric_smiles: bool = True,
     kekule_smiles: bool = True,
     canonical: bool = True,
-    selected_rule: Optional[str] = Query(default=None)
+    selected_items: Optional[str] = Query(default=None)
 ):
     """
-    上传SDF文件，提取SMILES并对每条进行药物类药性评估
+    上传SDF文件，提取SMILES并对每条进行综合评估（类药性规则+分子性质）
 
-    - 规则选择：单选，通过查询参数 selected_rule=RuleName 指定；不传则默认 'Lipinski'
+    - 评估项目选择：多选，通过查询参数 selected_items 指定，用逗号分隔
+    - 可用项目：Lipinski, Ghose, Oprea, Veber, Varma, QED, SAscore, Fsp3, MCE18, NPscore
+    - 不传则默认评估 Lipinski 规则
     """
     try:
         if not file.filename.lower().endswith('.sdf'):
@@ -99,14 +101,25 @@ async def analyze_sdf_druglikeness(
         if not results:
             return fail(message="SDF文件中未找到可评估分子", code=400)
 
-        # 规则默认值：仅 Lipinski；只允许单选
-        allowed_rules = {"Lipinski", "Ghose", "Oprea", "Veber", "Varma"}
-        if selected_rule is None or selected_rule.strip() == "":
-            rules_to_use = ["Lipinski"]
+        # 解析选择的评估项目
+        allowed_items = {
+            "Lipinski", "Ghose", "Oprea", "Veber", "Varma", 
+            "QED", "SAscore", "Fsp3", "MCE18", "NPscore"
+        }
+        
+        if selected_items is None or selected_items.strip() == "":
+            # 默认只评估 Lipinski 规则
+            items_to_use = ["Lipinski"]
         else:
-            if selected_rule not in allowed_rules:
-                return fail(message=f"无效的规则: {selected_rule}. 可用规则: {sorted(list(allowed_rules))}", code=400)
-            rules_to_use = [selected_rule]
+            # 解析多选项目
+            items_to_use = [item.strip() for item in selected_items.split(',') if item.strip()]
+            # 验证所有项目是否有效
+            invalid_items = [item for item in items_to_use if item not in allowed_items]
+            if invalid_items:
+                return fail(
+                    message=f"无效的评估项目: {invalid_items}. 可用项目: {sorted(list(allowed_items))}", 
+                    code=400
+                )
 
         service = DruglikenessService()
         items = []
@@ -115,12 +128,13 @@ async def analyze_sdf_druglikeness(
             if not smiles:
                 continue
             try:
-                metrics, matches, total_score = service.evaluate_druglikeness(smiles, selected_rules=rules_to_use)
+                # 使用新的综合评估方法
+                evaluation_result = service.evaluate_comprehensive(smiles, selected_items=items_to_use)
                 items.append({
                     'smiles': smiles,
-                    'metrics': metrics,
-                    'matches': matches,
-                    'total_score': total_score
+                    'selected_items': evaluation_result['selected_items'],
+                    'druglikeness_rules': evaluation_result['druglikeness_rules'],
+                    'molecular_properties': evaluation_result['molecular_properties']
                 })
             except Exception:
                 # 单个失败不影响整体，静默跳过

@@ -353,9 +353,14 @@ const evaluateFromFile = async () => {
   const formData = new FormData()
   formData.append('file', uploadedFile.value)
 
+  // 将前端选择的规则ID转换为API格式
+  const selectedItems = mapSelectedRulesToAPI(selectedRules.value)
+
+  console.log('SDF文件选择的评估项目:', selectedItems)
+
   // 调用 API
   const result = await analyzeSdfFile(formData, {
-    selected_rule: ruleMapping[selectedRule.value],
+    selected_items: selectedItems.join(','),
     isomeric_smiles: true,
     kekule_smiles: true,
     canonical: true
@@ -364,14 +369,14 @@ const evaluateFromFile = async () => {
   // 显示成功消息
   message.success({
     title: '评估成功',
-    message: 'SDF文件评估完成，正在跳转到结果页面...',
+    message: `SDF文件评估完成，已完成 ${selectedItems.length} 个项目的评估，正在跳转到结果页面...`,
     duration: 2000
   })
 
   // 使用存储工具函数存储数据
   const resultKey = storeResultData({
     data: result.data,
-    rule: ruleMapping[selectedRule.value],
+    selectedItems: selectedItems,
     source: 'file'
   })
 

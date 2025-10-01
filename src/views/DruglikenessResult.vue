@@ -10,6 +10,90 @@
         </div>
       </div>
 
+      <!-- 搜索面板（仅在有多个分子时显示） -->
+      <div v-if="dataSource === 'file' && moleculesList.length > 0"
+        class="bg-white rounded-lg border border-slate-200 p-4 mb-6">
+
+        <!-- 规则匹配度搜索 -->
+        <div class="mb-4">
+          <h3 class="text-sm font-semibold text-gray-700 mb-2">
+            <i class="fas fa-filter mr-2"></i>规则匹配度
+          </h3>
+          <div class="flex items-end space-x-4">
+            <div class="flex-shrink-0" style="width: 200px;">
+              <label class="block text-sm font-medium text-gray-700 mb-1">选择规则</label>
+              <select v-model="ruleSearchField"
+                class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <option value="">请选择规则</option>
+                <option v-for="opt in ruleOptions" :key="opt.value" :value="opt.value">
+                  {{ opt.label }}
+                </option>
+              </select>
+            </div>
+            <div class="flex-1">
+              <label class="block text-sm font-medium text-gray-700 mb-1">匹配度（%）</label>
+              <input v-model="ruleSearchValue" type="number" min="0" max="100" placeholder="例如：75"
+                :disabled="!ruleSearchField"
+                class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-gray-100">
+            </div>
+          </div>
+        </div>
+
+        <!-- 分子性质搜索 -->
+        <div class="mb-4">
+          <h3 class="text-sm font-semibold text-gray-700 mb-2">
+            <i class="fas fa-filter mr-2"></i>分子性质
+          </h3>
+          <div class="flex items-end space-x-4">
+            <div class="flex-shrink-0" style="width: 200px;">
+              <label class="block text-sm font-medium text-gray-700 mb-1">选择性质</label>
+              <select v-model="propertySearchField"
+                class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <option value="">请选择性质</option>
+                <option v-for="opt in propertyOptions" :key="opt.value" :value="opt.value">
+                  {{ opt.label }}
+                </option>
+              </select>
+            </div>
+            <div class="flex-1">
+              <label class="block text-sm font-medium text-gray-700 mb-1">最小值</label>
+              <input v-model="propertySearchMinValue" type="number" step="any" placeholder="最小值"
+                :disabled="!propertySearchField"
+                class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-gray-100">
+            </div>
+            <div class="flex-1">
+              <label class="block text-sm font-medium text-gray-700 mb-1">最大值</label>
+              <input v-model="propertySearchMaxValue" type="number" step="any" placeholder="最大值"
+                :disabled="!propertySearchField"
+                class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-gray-100">
+            </div>
+          </div>
+        </div>
+
+        <!-- 操作按钮 -->
+        <div class="flex items-center justify-between">
+          <div class="flex space-x-2">
+            <button @click="applySearch" :disabled="(!ruleSearchField && !propertySearchField)"
+              class="px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition duration-200">
+              <i class="fas fa-search mr-2"></i>
+              搜索
+            </button>
+            <button @click="clearSearch"
+              class="px-6 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 transition duration-200">
+              <i class="fas fa-times mr-2"></i>
+              清除
+            </button>
+          </div>
+
+          <!-- 搜索结果提示 -->
+          <div v-if="(appliedRuleField || appliedPropertyField) && filteredMolecules.length < moleculesList.length"
+            class="text-sm text-blue-600">
+            <i class="fas fa-info-circle mr-1"></i>
+            找到 {{ filteredMolecules.length }} 条符合条件的结果（共 {{ moleculesList.length }} 条）
+          </div>
+        </div>
+      </div>
+
       <!-- 结果展示表格 -->
       <div class="bg-white rounded-lg border border-slate-200">
         <!-- 标题栏 -->
@@ -65,9 +149,15 @@
           <div class="flex justify-between items-center">
             <!-- 左侧：显示信息 -->
             <div class="text-sm text-gray-600">
-              <span v-if="dataSource === 'file' && moleculesList.length > 0">
-                显示 {{ (currentPage - 1) * pageSize + 1 }} - {{ Math.min(currentPage * pageSize, moleculesList.length) }}
-                条，共 {{ moleculesList.length }} 条
+              <span v-if="dataSource === 'file' && filteredMolecules.length > 0">
+                显示 {{ (currentPage - 1) * pageSize + 1 }} - {{ Math.min(currentPage * pageSize,
+                  filteredMolecules.length) }}
+                条，共 {{ filteredMolecules.length }} 条
+                <span
+                  v-if="(appliedRuleField || appliedPropertyField) && filteredMolecules.length < moleculesList.length"
+                  class="text-blue-600">
+                  （已过滤，总数 {{ moleculesList.length }}）
+                </span>
               </span>
               <span v-else>
                 Showing 1 entry
@@ -145,6 +235,38 @@ const moleculesList = ref([]) // 多分子文件中的分子列表
 const currentPage = ref(1) // 当前页码
 const pageSize = ref(10) // 每页显示条数
 
+// 搜索相关 - 临时输入值（用户正在输入）
+const ruleSearchField = ref('') // 规则搜索字段
+const ruleSearchValue = ref('') // 规则匹配度值
+const propertySearchField = ref('') // 性质搜索字段
+const propertySearchMinValue = ref('') // 性质最小值
+const propertySearchMaxValue = ref('') // 性质最大值
+
+// 应用的搜索条件（点击搜索后才更新）
+const appliedRuleField = ref('')
+const appliedRuleValue = ref('')
+const appliedPropertyField = ref('')
+const appliedPropertyMin = ref('')
+const appliedPropertyMax = ref('')
+
+// 规则选项
+const ruleOptions = [
+  { value: 'Lipinski', label: "Lipinski's rules" },
+  { value: 'Ghose', label: "Ghose's rules" },
+  { value: 'Oprea', label: "Oprea's rules" },
+  { value: 'Veber', label: "Veber's rules" },
+  { value: 'Varma', label: "Varma's rules" }
+]
+
+// 性质选项
+const propertyOptions = [
+  { value: 'QED', label: 'QED' },
+  { value: 'SAscore', label: 'SAscore' },
+  { value: 'Fsp3', label: 'Fsp3' },
+  { value: 'MCE18', label: 'MCE18' },
+  { value: 'NPscore', label: 'NPscore' }
+]
+
 // 分子性质名称映射
 const propertyNameMapping = {
   'QED': 'QED',
@@ -163,25 +285,61 @@ const ruleNameMapping = {
   'Varma': 'Varma Match'
 }
 
+// 过滤后的数据列表（基于应用的搜索条件）
+const filteredMolecules = computed(() => {
+  if (dataSource.value !== 'file' || moleculesList.value.length === 0) {
+    return resultData.value ? [resultData.value] : []
+  }
+
+  // 如果没有应用任何搜索条件，返回所有数据
+  if (!appliedRuleField.value && !appliedPropertyField.value) {
+    return moleculesList.value
+  }
+
+  // 应用搜索过滤
+  return moleculesList.value.filter(molecule => {
+    let passRuleFilter = true
+    let passPropertyFilter = true
+
+    // 规则过滤
+    if (appliedRuleField.value && appliedRuleValue.value) {
+      const matchValue = molecule.druglikeness_rules?.matches?.[appliedRuleField.value]
+      if (matchValue == null) {
+        passRuleFilter = false
+      } else {
+        const matchPercent = (matchValue * 100).toFixed(0) // 转换为百分比整数
+        const searchPercent = String(appliedRuleValue.value).trim() // 转换为字符串
+        passRuleFilter = matchPercent === searchPercent
+      }
+    }
+
+    // 性质过滤
+    if (appliedPropertyField.value && (appliedPropertyMin.value || appliedPropertyMax.value)) {
+      const propValue = molecule.molecular_properties?.[appliedPropertyField.value]
+      if (propValue == null || typeof propValue !== 'number') {
+        passPropertyFilter = false
+      } else {
+        const min = appliedPropertyMin.value ? parseFloat(appliedPropertyMin.value) : -Infinity
+        const max = appliedPropertyMax.value ? parseFloat(appliedPropertyMax.value) : Infinity
+        passPropertyFilter = propValue >= min && propValue <= max
+      }
+    }
+
+    // 两个条件都要满足（AND逻辑）
+    return passRuleFilter && passPropertyFilter
+  })
+})
+
 // 计算属性：总页数
 const totalPages = computed(() => {
-  if (dataSource.value === 'file' && moleculesList.value.length > 0) {
-    return Math.ceil(moleculesList.value.length / pageSize.value)
-  }
-  return 1
+  return Math.ceil(filteredMolecules.value.length / pageSize.value) || 1
 })
 
 // 计算属性：当前页显示的数据
 const currentPageData = computed(() => {
-  if (dataSource.value === 'file' && moleculesList.value.length > 0) {
-    const start = (currentPage.value - 1) * pageSize.value
-    const end = start + pageSize.value
-    return moleculesList.value.slice(start, end)
-  } else if (resultData.value) {
-    // SMILES输入，只有一条数据
-    return [resultData.value]
-  }
-  return []
+  const start = (currentPage.value - 1) * pageSize.value
+  const end = start + pageSize.value
+  return filteredMolecules.value.slice(start, end)
 })
 
 // 计算属性：动态生成表头 --> 数据来源于从接口返回中进行提取
@@ -307,6 +465,37 @@ const nextPage = () => {
   }
 }
 
+// 搜索控制函数
+const applySearch = () => {
+  // 将临时输入值应用到实际的过滤条件
+  appliedRuleField.value = ruleSearchField.value
+  appliedRuleValue.value = ruleSearchValue.value
+  appliedPropertyField.value = propertySearchField.value
+  appliedPropertyMin.value = propertySearchMinValue.value
+  appliedPropertyMax.value = propertySearchMaxValue.value
+
+  // 应用搜索后回到第一页
+  currentPage.value = 1
+}
+
+const clearSearch = () => {
+  // 清空临时输入值
+  ruleSearchField.value = ''
+  ruleSearchValue.value = ''
+  propertySearchField.value = ''
+  propertySearchMinValue.value = ''
+  propertySearchMaxValue.value = ''
+
+  // 清空应用的搜索条件
+  appliedRuleField.value = ''
+  appliedRuleValue.value = ''
+  appliedPropertyField.value = ''
+  appliedPropertyMin.value = ''
+  appliedPropertyMax.value = ''
+
+  currentPage.value = 1
+}
+
 // 返回评估页面
 const goBack = () => {
   // 清理当前结果数据
@@ -336,8 +525,9 @@ const exportToCSV = () => {
   exportData.push(headers)
 
   // 根据数据源决定导出内容
-  const dataToExport = dataSource.value === 'file' && moleculesList.value.length > 0
-    ? moleculesList.value
+  // 如果是文件且有过滤条件，导出过滤后的数据；否则导出所有数据
+  const dataToExport = dataSource.value === 'file' && filteredMolecules.value.length > 0
+    ? filteredMolecules.value
     : currentPageData.value
 
   // 导出所有分子
@@ -361,7 +551,8 @@ const exportToCSV = () => {
   const timestamp = new Date().toISOString().slice(0, 19).replace(/:/g, '-')
   const itemsCount = selectedItems.value.length
   const moleculeCount = dataToExport.length
-  const filename = `evaluation_results_${itemsCount}items_${moleculeCount}molecules_${timestamp}.csv`
+  const filtered = (appliedRuleField.value || appliedPropertyField.value) ? '_filtered' : ''
+  const filename = `evaluation_results_${itemsCount}items_${moleculeCount}molecules${filtered}_${timestamp}.csv`
 
   // 导出文件
   XLSX.writeFile(wb, filename)

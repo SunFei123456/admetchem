@@ -462,7 +462,9 @@ class DruglikenessService:
             raise ValueError(f"Invalid items: {invalid_items}. Available items: {all_items}")
         
         result = {
-            'selected_items': selected_items
+            'selected_items': selected_items,
+            'druglikeness_rules': {},  # 初始化为空字典
+            'molecular_properties': {}  # 初始化为空字典
         }
         
         # 分离类药性规则和分子性质

@@ -21,75 +21,105 @@
                         <div class="p-4 space-y-3">
 
                             <!-- Biophysics - 生物物理学性质 -->
-                            <div>
-                                <div class="flex items-center mb-3">
-                                    <i class="fas fa-atom text-indigo-600 mr-2"></i>
-                                    <h3 class="font-semibold text-gray-800">Biophysics</h3>
-                                </div>
-                                <div class="ml-6 space-y-2">
-                                    <div v-for="prop in biophysicsProps" :key="prop.id" class="flex items-center">
-                                        <input type="checkbox" :id="prop.id" v-model="selectedProperties"
-                                            :value="prop.id"
-                                            @change="updateSelectedModel(prop)"
-                                            class="mr-3 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
-                                        <label :for="prop.id" :class="[
-                                            'cursor-pointer text-sm transition-colors duration-200',
-                                            selectedProperties.has(prop.id)
-                                                ? 'text-blue-800 font-semibold'
-                                                : 'text-blue-600 hover:text-blue-800'
-                                        ]">
-                                            {{ prop.name }}
-                                        </label>
+                            <div class="border border-gray-200 rounded">
+                                <div @click="toggleCategory('biophysics')" 
+                                    class="flex items-center justify-between p-3 cursor-pointer hover:bg-gray-50 transition-colors duration-200">
+                                    <div class="flex items-center">
+                                        <i class="fas fa-atom text-indigo-600 mr-2"></i>
+                                        <h3 class="font-semibold text-gray-800">Biophysics</h3>
+                                        <span class="ml-2 text-xs text-gray-500">({{ biophysicsProps.length }})</span>
                                     </div>
+                                    <i :class="[
+                                        'fas transition-transform duration-200',
+                                        expandedCategories.biophysics ? 'fa-chevron-up' : 'fa-chevron-down'
+                                    ]"></i>
                                 </div>
+                                <transition name="collapse">
+                                    <div v-show="expandedCategories.biophysics" class="px-3 pb-3 space-y-2">
+                                        <div v-for="prop in biophysicsProps" :key="prop.id" class="flex items-center">
+                                            <input type="checkbox" :id="prop.id" v-model="selectedProperties"
+                                                :value="prop.id"
+                                                @change="updateSelectedModel(prop)"
+                                                class="mr-3 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                                            <label :for="prop.id" :class="[
+                                                'cursor-pointer text-sm transition-colors duration-200',
+                                                selectedProperties.has(prop.id)
+                                                    ? 'text-blue-800 font-semibold'
+                                                    : 'text-blue-600 hover:text-blue-800'
+                                            ]">
+                                                {{ prop.name }}
+                                            </label>
+                                        </div>
+                                    </div>
+                                </transition>
                             </div>
 
                             <!-- Physical Chemistry - 物理化学性质 -->
-                            <div>
-                                <div class="flex items-center mb-3">
-                                    <i class="fas fa-flask text-cyan-600 mr-2"></i>
-                                    <h3 class="font-semibold text-gray-800">Physical Chemistry</h3>
-                                </div>
-                                <div class="ml-6 space-y-2">
-                                    <div v-for="prop in physicalChemistryProps" :key="prop.id" class="flex items-center">
-                                        <input type="checkbox" :id="prop.id" v-model="selectedProperties"
-                                            :value="prop.id"
-                                            @change="updateSelectedModel(prop)"
-                                            class="mr-3 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
-                                        <label :for="prop.id" :class="[
-                                            'cursor-pointer text-sm transition-colors duration-200',
-                                            selectedProperties.has(prop.id)
-                                                ? 'text-blue-800 font-semibold'
-                                                : 'text-blue-600 hover:text-blue-800'
-                                        ]">
-                                            {{ prop.name }}
-                                        </label>
+                            <div class="border border-gray-200 rounded">
+                                <div @click="toggleCategory('physicalChemistry')" 
+                                    class="flex items-center justify-between p-3 cursor-pointer hover:bg-gray-50 transition-colors duration-200">
+                                    <div class="flex items-center">
+                                        <i class="fas fa-flask text-cyan-600 mr-2"></i>
+                                        <h3 class="font-semibold text-gray-800">Physical Chemistry</h3>
+                                        <span class="ml-2 text-xs text-gray-500">({{ physicalChemistryProps.length }})</span>
                                     </div>
+                                    <i :class="[
+                                        'fas transition-transform duration-200',
+                                        expandedCategories.physicalChemistry ? 'fa-chevron-up' : 'fa-chevron-down'
+                                    ]"></i>
                                 </div>
+                                <transition name="collapse">
+                                    <div v-show="expandedCategories.physicalChemistry" class="px-3 pb-3 space-y-2">
+                                        <div v-for="prop in physicalChemistryProps" :key="prop.id" class="flex items-center">
+                                            <input type="checkbox" :id="prop.id" v-model="selectedProperties"
+                                                :value="prop.id"
+                                                @change="updateSelectedModel(prop)"
+                                                class="mr-3 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                                            <label :for="prop.id" :class="[
+                                                'cursor-pointer text-sm transition-colors duration-200',
+                                                selectedProperties.has(prop.id)
+                                                    ? 'text-blue-800 font-semibold'
+                                                    : 'text-blue-600 hover:text-blue-800'
+                                            ]">
+                                                {{ prop.name }}
+                                            </label>
+                                        </div>
+                                    </div>
+                                </transition>
                             </div>
 
                             <!-- Physiology - 生理学性质 -->
-                            <div>
-                                <div class="flex items-center mb-3">
-                                    <i class="fas fa-heartbeat text-pink-600 mr-2"></i>
-                                    <h3 class="font-semibold text-gray-800">Physiology</h3>
-                                </div>
-                                <div class="ml-6 space-y-2">
-                                    <div v-for="prop in physiologyProps" :key="prop.id" class="flex items-center">
-                                        <input type="checkbox" :id="prop.id" v-model="selectedProperties"
-                                            :value="prop.id"
-                                            @change="updateSelectedModel(prop)"
-                                            class="mr-3 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
-                                        <label :for="prop.id" :class="[
-                                            'cursor-pointer text-sm transition-colors duration-200',
-                                            selectedProperties.has(prop.id)
-                                                ? 'text-blue-800 font-semibold'
-                                                : 'text-blue-600 hover:text-blue-800'
-                                        ]">
-                                            {{ prop.name }}
-                                        </label>
+                            <div class="border border-gray-200 rounded">
+                                <div @click="toggleCategory('physiology')" 
+                                    class="flex items-center justify-between p-3 cursor-pointer hover:bg-gray-50 transition-colors duration-200">
+                                    <div class="flex items-center">
+                                        <i class="fas fa-heartbeat text-pink-600 mr-2"></i>
+                                        <h3 class="font-semibold text-gray-800">Physiology</h3>
+                                        <span class="ml-2 text-xs text-gray-500">({{ physiologyProps.length }})</span>
                                     </div>
+                                    <i :class="[
+                                        'fas transition-transform duration-200',
+                                        expandedCategories.physiology ? 'fa-chevron-up' : 'fa-chevron-down'
+                                    ]"></i>
                                 </div>
+                                <transition name="collapse">
+                                    <div v-show="expandedCategories.physiology" class="px-3 pb-3 space-y-2">
+                                        <div v-for="prop in physiologyProps" :key="prop.id" class="flex items-center">
+                                            <input type="checkbox" :id="prop.id" v-model="selectedProperties"
+                                                :value="prop.id"
+                                                @change="updateSelectedModel(prop)"
+                                                class="mr-3 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                                            <label :for="prop.id" :class="[
+                                                'cursor-pointer text-sm transition-colors duration-200',
+                                                selectedProperties.has(prop.id)
+                                                    ? 'text-blue-800 font-semibold'
+                                                    : 'text-blue-600 hover:text-blue-800'
+                                            ]">
+                                                {{ prop.name }}
+                                            </label>
+                                        </div>
+                                    </div>
+                                </transition>
                             </div>
                         </div>
                     </div>
@@ -256,6 +286,18 @@ const dataSource = ref('smiles')
 // 选中的属性集合（多选）
 const selectedProperties = ref(new Set())
 
+// 折叠状态管理
+const expandedCategories = ref({
+    biophysics: true,
+    physicalChemistry: false,
+    physiology: false
+})
+
+// 切换分类折叠状态
+const toggleCategory = (category) => {
+    expandedCategories.value[category] = !expandedCategories.value[category]
+}
+
 // 计算属性：是否全选
 const isAllSelected = computed(() => {
     const allProps = [
@@ -332,5 +374,19 @@ button:hover {
 input[type="checkbox"]:checked {
     background-color: #3b82f6;
     border-color: #3b82f6;
+}
+
+/* 折叠动画 */
+.collapse-enter-active,
+.collapse-leave-active {
+    transition: all 0.3s ease;
+    max-height: 1000px;
+    overflow: hidden;
+}
+
+.collapse-enter-from,
+.collapse-leave-to {
+    max-height: 0;
+    opacity: 0;
 }
 </style>

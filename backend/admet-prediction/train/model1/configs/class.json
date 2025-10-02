@@ -1,0 +1,51 @@
+{
+	"data": {
+		"path": "data_index/classe",
+		"task": "classification",
+
+		"target_names": ["CYP1A2-inh","CYP2C9-inh","CYP2C9-sub","CYP2C19-inh","CYP2D6-inh","CYP2D6-sub","CYP3A4-inh","CYP3A4-sub","hERG",
+		"Pgp-inh","Ames","BBB","DILI","HIA","SkinSen","NR-AR-LBD", "NR-AR", "NR-AhR", "NR-Aromatase", "NR-ER", "NR-ER-LBD", "NR-PPAR-gamma", "SR-ARE", "SR-ATAD5", "SR-HSE", "SR-MMP", "SR-p53"
+		],
+		"batch_size": 64
+	},
+	"train": {
+		"loss_fn": "bce",
+		"metric_fn": "auc",
+		"warmup": 2,
+		"init_lr": 0.0001,
+		"max_lr": 0.001,
+		"final_lr": 1e-05,
+		"epochs": 10,
+		"num_fold": 5,
+		"save_path": "ckpt/classe",
+		"device": "cuda:1",
+		"pre_train" : false
+
+	},
+	"model": {
+		"atom_dim": 42,
+		"bond_dim": 14,
+		"pharm_dim": 194,
+		"reac_dim": 34,
+		"hid_dim": 300,
+		"depth": 3,
+		"act": "ReLU",
+		"num_task": 27,
+		"num_tasks": 27,
+		"Gea_n_heads": 5,
+		"Gea_unit_size": 60,
+		"multiclass_num_classes" : 1,
+		"view" : "apj",
+		"use_checkpoint": true,
+		"checkpoint_path": ["pre_train/dump/0410-pre_train/pre_train/model_18/original_MoleculeModel_0412_1237_18th_epoch.pkl",
+		"pre_train/dump/0410-pre_train/pre_train/model_18/augment_MoleculeModel_0412_1237_18th_epoch.pkl"],
+		"onlyloadencoder": true,
+		 "dropout": 0.1,
+    	 "ffn_num_layers":2,
+		"cuda": true,
+		"temperature":0.1,
+		"ffn_hidden_size": 300,
+		"dataset_type" : "classification"
+	},
+	"seed": 2022
+}

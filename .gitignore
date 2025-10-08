@@ -58,3 +58,7 @@ __MACOSX
 *.zip
 *.rar
 *.7z
+
+
+#ven虚拟环境
+venv_admet

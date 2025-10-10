@@ -54,7 +54,7 @@
                         <div class="flex items-start border-b pb-3">
                             <span class="font-semibold text-gray-700 w-32">SMILES:</span>
                             <span class="font-mono text-sm text-gray-900 break-all flex-1">{{ molecule?.smiles || 'N/A'
-                            }}</span>
+                                }}</span>
                         </div>
                     </div>
                 </div>

@@ -45,16 +45,6 @@
                                     <i class="fas fa-brain text-green-500 mr-3 w-4 text-center"></i>
                                     <span class="font-medium">ADMET Prediction</span>
                                 </router-link>
-                                <router-link to="/systematic-evaluation"
-                                    class="flex items-center px-4 py-3 text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition duration-200">
-                                    <i class="fas fa-chart-line text-purple-500 mr-3 w-4 text-center"></i>
-                                    <span class="font-medium">Systematic Evaluation</span>
-                                </router-link>
-                                <router-link to="/application-domain"
-                                    class="flex items-center px-4 py-3 text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition duration-200">
-                                    <i class="fas fa-flask text-orange-500 mr-3 w-4 text-center"></i>
-                                    <span class="font-medium">Application Domain</span>
-                                </router-link>
                             </div>
                         </div>
                     </div>
@@ -99,7 +89,8 @@
                 <a href="#" class="block py-2 text-gray-300 hover:text-white transition duration-300">
                     <i class="fas fa-server mr-2"></i>Webserver
                 </a>
-                <router-link to="/search" @click="closeMobileMenu" class="block py-2 text-gray-300 hover:text-white transition duration-300">
+                <router-link to="/search" @click="closeMobileMenu"
+                    class="block py-2 text-gray-300 hover:text-white transition duration-300">
                     <i class="fas fa-search mr-2"></i>Search
                 </router-link>
             </div>

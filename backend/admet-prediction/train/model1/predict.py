@@ -236,7 +236,7 @@ def predict_result(smiles,task_type):
             device=train_args['device']
         )
         return predictions, symbols
-    else:
+    else:  # 处理回归任务（reg, hfe等）
         predictions = predict(
             smiles_list=smiles,
             model_path=os.path.join(train_args["save_path"], "model1_reg_latest.pt"),
@@ -279,7 +279,7 @@ def predict_smiles(smiles,task_types):
                     "symbol": symbols[i][0]
                 }
         elif k == "pama":
-            predictions, symbols = predict_result(smiles, "class")
+            predictions, symbols = predict_result(smiles, "pama")
             for i, smile_str in enumerate(smiles):
                 # 确保每个smile的字典已初始化
                 if smile_str not in result:
@@ -290,8 +290,22 @@ def predict_smiles(smiles,task_types):
                     "prediction": predictions[i][0],
                     "symbol": symbols[i][0]
                 }
+        
+        elif k == "hfe":
+            # Hydration Free Energy 是单任务回归
+            predictions = predict_result(smiles, "hfe")
+            for i, smile_str in enumerate(smiles):
+                # 确保每个smile的字典已初始化
+                if smile_str not in result:
+                    result[smile_str] = {}
 
-        else:
+                # 添加该任务的预测结果
+                result[smile_str]["Hydration Free Energy"] = {
+                    "prediction": predictions[i][0]
+                }
+
+        elif k == "reg":
+            # 处理回归任务
             predictions = predict_result(smiles, "reg")
             for task_name in v:
                 # 获取该任务在预测结果中的索引
@@ -316,9 +330,11 @@ if __name__ == '__main__':
 
     # 示例SMILES
     test_smiles = [
-        "CCO",  # 乙醇
-        "CC(=O)O",  # 乙酸
-        "c1ccccc1",  # 苯
+        # "CCO",  # 乙醇
+        # "CC(=O)O",  # 乙酸
+        # "c1ccccc1",  # 苯
+        
+        "CC1=CN=C(C(=C1OC)C)CS(=O)C2=NC3=C(N2)C=C(C=C3)OC"
     ]
 
     # 进行预测

@@ -263,7 +263,7 @@ const physiologyProps = ref([
     { id: 'dili', name: 'DILI', selected: false },
     { id: 'halflife', name: 'Drug Half-Life', selected: false },
     { id: 'hia', name: 'HIA', selected: false },
-    { id: 'ld50', name: 'LD50', selected: false },
+    // { id: 'ld50', name: 'LD50', selected: false },  // 暂不支持，模型未提供
     { id: 'ppbr', name: 'PPBR', selected: false },
     { id: 'skinSen', name: 'SkinSen', selected: false },
     { id: 'nr-ar-lbd', name: 'NR-AR-LBD', selected: false },

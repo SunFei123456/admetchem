@@ -49,7 +49,7 @@ class ADMETService:
         'dili': 'DILI',
         'halflife': 'Drug Half-Life',
         'hia': 'HIA',
-        'ld50': 'LD50',
+        # 'ld50': 'LD50',  # 暂不支持，模型未提供
         'ppbr': 'PPBR',
         'skinSen': 'SkinSen',
         'nr-ar-lbd': 'NR-AR-LBD',

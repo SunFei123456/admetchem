@@ -5,6 +5,7 @@ import DruglikenessEvaluation from '@/views/DruglikenessEvaluation.vue'
 import DruglikenessResult from '@/views/DruglikenessResult.vue'
 import AdmetPrediction from '@/views/AdmetPrediction.vue'
 import AdmetPredictionResult from '@/views/AdmetPredictionResult.vue'
+import MoleculeDetail from '@/views/MoleculeDetail.vue'
 import SystematicEvaluation from '@/views/SystematicEvaluation.vue'
 import ApplicationDomain from '@/views/ApplicationDomain.vue'
 import Optimization from '@/views/Optimization.vue'
@@ -42,6 +43,11 @@ const router = createRouter({
             path: '/admet-prediction-result',
             name: 'admet-prediction-result',
             component: AdmetPredictionResult
+        },
+        {
+            path: '/molecule-detail',
+            name: 'molecule-detail',
+            component: MoleculeDetail
         },
         {
             path: '/systematic-evaluation',

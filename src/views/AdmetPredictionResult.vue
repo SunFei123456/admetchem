@@ -124,9 +124,13 @@
                             <tr v-for="(molecule, index) in currentPageData" :key="index"
                                 class="border-b border-gray-200 hover:bg-gray-50">
                                 <!-- 分子列 -->
-                                <td class="px-4 py-3">
+                                <td class="px-4 py-3 cursor-pointer hover:bg-blue-50 transition-colors duration-200"
+                                    @click="goToMoleculeDetail(molecule)">
                                     <div class="flex items-center">
-                                        <span class="font-mono text-sm break-all">{{ molecule?.smiles || 'N/A' }}</span>
+                                        <span
+                                            class="font-mono text-sm break-all text-blue-600 hover:text-blue-800 hover:underline">
+                                            {{ molecule?.smiles || 'N/A' }}
+                                        </span>
                                     </div>
                                 </td>
                                 <!-- ADMET 属性值列 -->
@@ -519,6 +523,17 @@ const nextPage = () => {
 // 返回预测页面
 const goBack = () => {
     router.push('/admet-prediction')
+}
+
+// 跳转到分子详情页面
+const goToMoleculeDetail = (molecule) => {
+    // 将分子数据存储到 sessionStorage，避免 DataCloneError
+    const moleculeData = JSON.parse(JSON.stringify(molecule))
+    sessionStorage.setItem('currentMolecule', JSON.stringify(moleculeData))
+
+    router.push({
+        name: 'molecule-detail'
+    })
 }
 
 // 导出CSV功能

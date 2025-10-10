@@ -203,6 +203,42 @@
                         </div>
                     </div>
 
+                    <!-- 模型选择 -->
+                    <div class="bg-white rounded-lg border border-slate-200">
+                        <div class="bg-gray-200 px-4 py-3 flex items-center">
+                            <i class="fas fa-brain text-gray-600 mr-2"></i>
+                            <span class="font-medium text-gray-700">Select Model</span>
+                        </div>
+                        <div class="p-4">
+                            <div class="flex items-center space-x-6">
+                                <label class="flex items-center cursor-pointer group">
+                                    <input type="radio" name="model" value="model1" v-model="selectedModel"
+                                        class="mr-2 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300">
+                                    <span :class="[
+                                        'text-sm transition-colors duration-200',
+                                        selectedModel === 'model1'
+                                            ? 'text-blue-600'
+                                            : 'text-gray-700 group-hover:text-blue-600'
+                                    ]">
+                                        <i class="fas fa-cube mr-1"></i>model-1
+                                    </span>
+                                </label>
+                                <label class="flex items-center cursor-pointer group">
+                                    <input type="radio" name="model" value="model2" v-model="selectedModel"
+                                        class="mr-2 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300">
+                                    <span :class="[
+                                        'text-sm transition-colors duration-200',
+                                        selectedModel === 'model2'
+                                            ? 'text-blue-600'
+                                            : 'text-gray-700 group-hover:text-blue-600'
+                                    ]">
+                                        <i class="fas fa-cubes mr-1"></i>model-2
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- 提交按钮 -->
                     <div class="flex space-x-4">
                         <button @click="handleSubmit" :disabled="selectedPropsArray.length === 0 || isLoading"
@@ -286,6 +322,7 @@ const smilesInput = ref('')
 const dataSource = ref('smiles')
 const uploadedFile = ref(null)
 const isLoading = ref(false)
+const selectedModel = ref('model1')  // 默认选择模型1
 
 // 路由
 const router = useRouter()
@@ -431,7 +468,7 @@ const handleSubmit = async () => {
 
             // 跳转到结果页面，并传递结果数据
             router.push({
-                name: 'admet-result',
+                name: 'admet-prediction-result',
                 state: {
                     result: response.data,
                     dataSource: dataSource.value,
@@ -455,6 +492,7 @@ const handleReset = () => {
     uploadedFile.value = null
     selectedProperties.value.clear()
     dataSource.value = 'smiles'
+    selectedModel.value = 'model1'  // 重置为默认模型
 
     message.info('表单已重置')
 }

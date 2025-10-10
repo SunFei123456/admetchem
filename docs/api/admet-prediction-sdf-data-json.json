@@ -1,0 +1,3910 @@
+{
+    "code": 0,
+    "message": "成功分析 100 个分子",
+    "data": {
+        "results": [
+            {
+                "smiles": "CCCCCC(=O)NC1CCc2cc(OC)c(OC)c(OC)c2-c2ccc(SC)c(=O)cc21",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -5.174056053161621
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 4.8450188636779785
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 3.9857170581817627
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -3.3500254154205322
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.9760329723358154,
+                        "symbol": "+++",
+                        "description": "Very High"
+                    }
+                }
+            },
+            {
+                "smiles": "CC1(C)OC(CP(c2ccccc2)c2ccccc2)C(CP(c2ccccc2)c2ccccc2)O1",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -3.6760311126708984
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 2.9554061889648438
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 2.7133421897888184
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -1.9113696813583374
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.1328483521938324,
+                        "symbol": "--",
+                        "description": "Low"
+                    }
+                }
+            },
+            {
+                "smiles": "O=c1[nH]c(=O)n(C2OC(CO)C(O)C2O)cc1F",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -2.5699541568756104
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 1.3925684690475464
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 1.4356180429458618
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -12.375121116638184
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.27292895317077637,
+                        "symbol": "--",
+                        "description": "Low"
+                    }
+                }
+            },
+            {
+                "smiles": "CCCCCc1nc2c(c(=O)c3ccccc3n2C)c(=O)n1C1CCCCCC1",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -3.9527204036712646
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 3.16363263130188
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 2.817363739013672
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -4.292209148406982
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.9883072972297668,
+                        "symbol": "+++",
+                        "description": "Very High"
+                    }
+                }
+            },
+            {
+                "smiles": "CCCn1c(SCc2nc3sc(C)c(C)c3c(=O)[nH]2)nc2ccccc2c1=O",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -3.9989778995513916
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 3.1150801181793213
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 2.788336753845215
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -6.060786724090576
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.9844830632209778,
+                        "symbol": "+++",
+                        "description": "Very High"
+                    }
+                }
+            },
+            {
+                "smiles": "C=CC(=O)N1C/C(=C\\c2ccc(Cl)cc2)C(=O)/C(=C/c2ccc(Cl)cc2)C1",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -4.777346611022949
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 3.891896963119507
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 3.3826560974121094
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -5.793161392211914
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.9664631485939026,
+                        "symbol": "+++",
+                        "description": "Very High"
+                    }
+                }
+            },
+            {
+                "smiles": "Nc1nc(-c2cccs2)c(NC(=O)c2ccccc2)s1",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -4.345165252685547
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 3.3176376819610596
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 2.8534860610961914
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -9.139449119567871
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.8932173848152161,
+                        "symbol": "++",
+                        "description": "High"
+                    }
+                }
+            },
+            {
+                "smiles": "Cc1ccc2c(c1)c1c3n2CCN(C(=O)CN2CCN(C)CC2)C3CCC1",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -3.119413137435913
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 2.326213836669922
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 2.2310056686401367
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -8.274853706359863
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.833877444267273,
+                        "symbol": "++",
+                        "description": "High"
+                    }
+                }
+            },
+            {
+                "smiles": "Cc1cccc(Cn2cc(/C=C/[N+](=O)[O-])c3ccccc32)c1",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -3.4821527004241943
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 2.3794922828674316
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 2.224200487136841
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -5.271143436431885
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.7774302363395691,
+                        "symbol": "++",
+                        "description": "High"
+                    }
+                }
+            },
+            {
+                "smiles": "CC(NNC(=S)N1CCCC1)c1cccnn1",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -2.341654062271118
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 1.2001813650131226
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 1.3578780889511108
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -8.208816528320312
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.9777795076370239,
+                        "symbol": "+++",
+                        "description": "Very High"
+                    }
+                }
+            },
+            {
+                "smiles": "O=C(CNc1cccc2ccccc12)N/N=C/c1ccc([N+](=O)[O-])o1",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -3.394113063812256
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 2.1901469230651855
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 2.224393606185913
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -8.704504013061523
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.9531275629997253,
+                        "symbol": "+++",
+                        "description": "Very High"
+                    }
+                }
+            },
+            {
+                "smiles": "C[As](C)SCC1OC(O)C(O)C(O)C1O",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -2.1513543128967285
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 2.166581869125366
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 1.9747350215911865
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -6.6251678466796875
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.7858322262763977,
+                        "symbol": "++",
+                        "description": "High"
+                    }
+                }
+            },
+            {
+                "smiles": "Cc1ccc(S(=O)(=O)n2cc(-c3cnc(N)c(Br)n3)c3ccccc32)cc1",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -4.021859645843506
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 3.0446319580078125
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 2.8178553581237793
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -6.468268394470215
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.9924789667129517,
+                        "symbol": "+++",
+                        "description": "Very High"
+                    }
+                }
+            },
+            {
+                "smiles": "C/C(=N\\NC(=O)N/N=C(\\C)c1ccccn1)c1ccccn1",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -2.940458059310913
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 1.7329484224319458
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 1.7735761404037476
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -9.082657814025879
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.9787459969520569,
+                        "symbol": "+++",
+                        "description": "Very High"
+                    }
+                }
+            },
+            {
+                "smiles": "Cc1ccc2occ(/C=C/C(=O)c3ccc(Cl)cc3)c(=O)c2c1",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -4.405972480773926
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 3.611199378967285
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 3.2028965950012207
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -5.589362144470215
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.9690430164337158,
+                        "symbol": "+++",
+                        "description": "Very High"
+                    }
+                }
+            },
+            {
+                "smiles": "Cc1ccc(Cl)cc1N1CCN(C(=O)c2cn(C)c(=O)c3c2c2ccccc2n3C)CC1",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -4.404339790344238
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 3.4868478775024414
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 3.07169771194458
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -7.739468097686768
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.7840667366981506,
+                        "symbol": "++",
+                        "description": "High"
+                    }
+                }
+            },
+            {
+                "smiles": "c1nc(N2CCNCC2)c2sc3nc(N4CCOCC4)c4c(c3c2n1)CCC4",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -3.9030563831329346
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 2.9950928688049316
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 2.8458120822906494
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -10.251955032348633
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.9690792560577393,
+                        "symbol": "+++",
+                        "description": "Very High"
+                    }
+                }
+            },
+            {
+                "smiles": "CCN(CC)CCCNc1c2cc(OC)ccc2nc2cccc([N+](=O)[O-])c12",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -3.4759228229522705
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 3.3454885482788086
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 2.9721643924713135
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -4.97408390045166
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.9638789892196655,
+                        "symbol": "+++",
+                        "description": "Very High"
+                    }
+                }
+            },
+            {
+                "smiles": "Cc1cc(C(=O)COc2cccc(-n3cnnn3)c2)c(C)n1-c1ccccc1",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -4.277774810791016
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 3.2991647720336914
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 2.9055657386779785
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -6.379881381988525
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.9582058191299438,
+                        "symbol": "+++",
+                        "description": "Very High"
+                    }
+                }
+            },
+            {
+                "smiles": "C/C(=N\\Nc1nc2ccccc2o1)c1ccncn1",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -3.0252885818481445
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 1.8573578596115112
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 1.899242877960205
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -8.395608901977539
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.977752149105072,
+                        "symbol": "+++",
+                        "description": "Very High"
+                    }
+                }
+            },
+            {
+                "smiles": "COc1ccc2oc(S(=O)(=O)N3CC(CCl)c4ccc(N)cc43)cc2c1",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -4.12575101852417
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 3.2953708171844482
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 3.0066072940826416
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -6.477231979370117
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.9916061162948608,
+                        "symbol": "+++",
+                        "description": "Very High"
+                    }
+                }
+            },
+            {
+                "smiles": "CC(C)CC(=O)/C=C/n1c(=S)oc2ccccc21",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -3.331670045852661
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 2.656987428665161
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 2.4880409240722656
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -5.200967788696289
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.979888379573822,
+                        "symbol": "+++",
+                        "description": "Very High"
+                    }
+                }
+            },
+            {
+                "smiles": "O=C(NCc1cccnc1)/C(=C/c1ccc(-c2ccc(Cl)cc2)o1)S(=O)(=O)c1ccccc1",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -4.583898544311523
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 3.6372416019439697
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 3.280195474624634
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -6.36075496673584
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.8250189423561096,
+                        "symbol": "++",
+                        "description": "High"
+                    }
+                }
+            },
+            {
+                "smiles": "CC1CCC/C=C\\C2CC(O)CC2C(O)/C=C\\C(=O)O1",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -3.0995945930480957
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 2.6913890838623047
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 2.420442581176758
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -4.526134490966797
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.958855390548706,
+                        "symbol": "+++",
+                        "description": "Very High"
+                    }
+                }
+            },
+            {
+                "smiles": "COc1ccc(Nc2nc(N)c(C(=O)c3ccc(OC)cc3)s2)cc1",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -4.96154260635376
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 4.173572063446045
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 3.4748988151550293
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -6.877621650695801
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.9476094841957092,
+                        "symbol": "+++",
+                        "description": "Very High"
+                    }
+                }
+            },
+            {
+                "smiles": "CCC1C/C(=C\\c2cccnc2)C(=O)/C(=C/c2cccnc2)C1",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -4.294676303863525
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 3.8567512035369873
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 3.370995283126831
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -2.2409067153930664
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.9611116051673889,
+                        "symbol": "+++",
+                        "description": "Very High"
+                    }
+                }
+            },
+            {
+                "smiles": "Cc1ccc(NC2=CC(=O)C(=O)c3ccccc32)cc1",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -3.744453191757202
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 2.7538654804229736
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 2.5785489082336426
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -6.5829973220825195
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.9283530116081238,
+                        "symbol": "+++",
+                        "description": "Very High"
+                    }
+                }
+            },
+            {
+                "smiles": "Nc1ccc(-c2nc3cc(F)ccc3s2)cc1Cl",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -4.075084686279297
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 3.2952027320861816
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 3.024334669113159
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -5.983168601989746
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.9858511090278625,
+                        "symbol": "+++",
+                        "description": "Very High"
+                    }
+                }
+            },
+            {
+                "smiles": "CC(=O)Nc1c2sscc-2n(C)c1=O",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -3.093186855316162
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 1.9431240558624268
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 1.783173680305481
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -10.074679374694824
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.9092368483543396,
+                        "symbol": "+++",
+                        "description": "Very High"
+                    }
+                }
+            },
+            {
+                "smiles": "CC(C)=CC(=O)Nc1nnc(-c2ccc(F)cc2)s1",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -4.30501651763916
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 3.4920828342437744
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 3.000408887863159
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -6.5556745529174805
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.9914761185646057,
+                        "symbol": "+++",
+                        "description": "Very High"
+                    }
+                }
+            },
+            {
+                "smiles": "S=C(NCCc1ccccn1)N/N=C/c1ccccn1",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -2.8236937522888184
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 1.6408461332321167
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 1.717132329940796
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -6.939195156097412
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.9537365436553955,
+                        "symbol": "+++",
+                        "description": "Very High"
+                    }
+                }
+            },
+            {
+                "smiles": "COc1ccccc1CN(Cc1cc2cc(C)cc(C)c2[nH]c1=O)Cc1nnnn1CC1CCCO1",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -4.389961242675781
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 3.8793251514434814
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 3.4110589027404785
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -4.457479953765869
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.4612571895122528,
+                        "symbol": "-",
+                        "description": "Moderate Low"
+                    }
+                }
+            },
+            {
+                "smiles": "CCN(CC)CCn1c2ccccc2c2cnc(N)c(C#N)c21",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -2.7100143432617188
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 2.3723297119140625
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 2.2201313972473145
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -5.929547309875488
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.9790992140769958,
+                        "symbol": "+++",
+                        "description": "Very High"
+                    }
+                }
+            },
+            {
+                "smiles": "Cc1oc2c(c1C(=O)c1ccccc1)C(=O)C(=O)c1ccccc1-2",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -4.230186462402344
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 3.1947247982025146
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 2.8697807788848877
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -8.007237434387207
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.8826285600662231,
+                        "symbol": "++",
+                        "description": "High"
+                    }
+                }
+            },
+            {
+                "smiles": "O=C(Cc1ccccc1F)NC1=C(Cl)C(=O)c2ccccc2C1=O",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -3.8688035011291504
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 2.762160539627075
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 2.5824122428894043
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -6.8131303787231445
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.39324262738227844,
+                        "symbol": "-",
+                        "description": "Moderate Low"
+                    }
+                }
+            },
+            {
+                "smiles": "Oc1c(Cl)cc(Cl)cc1Sc1cc(Cl)cc(Cl)c1O",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -4.211426734924316
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 3.7252707481384277
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 3.24453067779541
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -4.4943528175354
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.9668155312538147,
+                        "symbol": "+++",
+                        "description": "Very High"
+                    }
+                }
+            },
+            {
+                "smiles": "Clc1ccc(Sc2oc(/C=N/n3cnnc3)cc2Br)cc1",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -4.353100776672363
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 3.682295083999634
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 3.259983777999878
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -5.2295918464660645
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.9885805249214172,
+                        "symbol": "+++",
+                        "description": "Very High"
+                    }
+                }
+            },
+            {
+                "smiles": "Nc1ccc(-c2nc3ccc(F)cc3s2)cc1I",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -4.0153374671936035
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 3.1784963607788086
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 2.9440481662750244
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -6.020471572875977
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.9851921796798706,
+                        "symbol": "+++",
+                        "description": "Very High"
+                    }
+                }
+            },
+            {
+                "smiles": "O=C(CCl)Nc1cc(-c2ccccc2)nn1-c1ccccc1",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -4.539479732513428
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 3.5801029205322266
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 3.0536911487579346
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -8.36865234375
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.9754207730293274,
+                        "symbol": "+++",
+                        "description": "Very High"
+                    }
+                }
+            },
+            {
+                "smiles": "c1ccc(CCCc2ccccn2)cc1",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -3.602308988571167
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 2.95853590965271
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 2.732618808746338
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -3.1685078144073486
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.4560093879699707,
+                        "symbol": "-",
+                        "description": "Moderate Low"
+                    }
+                }
+            },
+            {
+                "smiles": "CCc1ccc(-c2nc(CN3CCC(C(=O)N4CCN(c5ccccn5)CC4)CC3)c(C)o2)cc1",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -4.607122421264648
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 4.075588226318359
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 3.513000011444092
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -5.7323503494262695
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.7934140563011169,
+                        "symbol": "++",
+                        "description": "High"
+                    }
+                }
+            },
+            {
+                "smiles": "O=c1cc(-c2ccccc2F)[nH]c2cc3c(cc12)OCO3",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -4.1869635581970215
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 3.2194275856018066
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 2.9845142364501953
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -7.551793575286865
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.9824473261833191,
+                        "symbol": "+++",
+                        "description": "Very High"
+                    }
+                }
+            },
+            {
+                "smiles": "Cc1nc([N+](=O)[O-])c(Br)n1CC(=O)c1ccc(Br)cc1",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -3.177886486053467
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 1.9152939319610596
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 1.7466371059417725
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -9.452568054199219
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.944481611251831,
+                        "symbol": "+++",
+                        "description": "Very High"
+                    }
+                }
+            },
+            {
+                "smiles": "Cn1nc([N+](=O)[O-])nc1Sc1nnc(-c2ccccc2)o1",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -3.9098269939422607
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 2.837353467941284
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 2.6093146800994873
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -8.795188903808594
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.9953694939613342,
+                        "symbol": "+++",
+                        "description": "Very High"
+                    }
+                }
+            },
+            {
+                "smiles": "CC1CN(c2ccccc2)NC1=O",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -2.7766544818878174
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 1.9220809936523438
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 1.9050856828689575
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -6.020809173583984
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.9665496349334717,
+                        "symbol": "+++",
+                        "description": "Very High"
+                    }
+                }
+            },
+            {
+                "smiles": "C[C@]12CC[C@H](O)C=C1CC[C@@H]1[C@@H]2CC[C@]2(C)C(c3ccc(=O)oc3)CC[C@]12O",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -3.739265203475952
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 3.6560330390930176
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 3.1709144115448
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -4.8404083251953125
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.840429961681366,
+                        "symbol": "++",
+                        "description": "High"
+                    }
+                }
+            },
+            {
+                "smiles": "Cc1ccc(C(=O)/C=C/c2ccccc2)o1",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -3.99149751663208
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 3.104391574859619
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 2.820063591003418
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -5.8061747550964355
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.9945245981216431,
+                        "symbol": "+++",
+                        "description": "Very High"
+                    }
+                }
+            },
+            {
+                "smiles": "COc1cccc(N2CCN(c3ncnc4c3[nH]c3ccccc34)CC2C)c1",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -4.387624740600586
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 3.5269408226013184
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 3.152285575866699
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -6.091739654541016
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.9812482595443726,
+                        "symbol": "+++",
+                        "description": "Very High"
+                    }
+                }
+            },
+            {
+                "smiles": "N[C@@H]1CCN(c2c(F)cc3c(=O)c(C(=O)O)cn4c3c2Oc2c-4ccc3c2ccc2ccccc23)C1",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -4.1397528648376465
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 3.3809804916381836
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 3.09828519821167
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -8.772576332092285
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.8740378618240356,
+                        "symbol": "++",
+                        "description": "High"
+                    }
+                }
+            },
+            {
+                "smiles": "CCOC(=O)c1cccc(-n2c(-c3ccc(OC)cc3)nc3nc4ccccc4nc32)c1",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -4.920464992523193
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 4.140804767608643
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 3.532136917114258
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -5.046962261199951
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.9509878754615784,
+                        "symbol": "+++",
+                        "description": "Very High"
+                    }
+                }
+            },
+            {
+                "smiles": "COc1ccc2oc(C(=O)N3CC(CCl)c4ccc(N)cc43)cc2c1",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -4.291481018066406
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 3.3608312606811523
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 3.0021440982818604
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -7.5248541831970215
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.9828830361366272,
+                        "symbol": "+++",
+                        "description": "Very High"
+                    }
+                }
+            },
+            {
+                "smiles": "CCCC(=O)OCCNc1cc(SCc2ccco2)c2nonc2c1[N+](=O)[O-]",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -4.156916618347168
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 3.5557048320770264
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 3.1332850456237793
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -4.158170700073242
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.964681088924408,
+                        "symbol": "+++",
+                        "description": "Very High"
+                    }
+                }
+            },
+            {
+                "smiles": "COc1ccc2[nH]c(-c3cccc(N(C)C)c3)cc(=O)c2c1",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -4.328566551208496
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 3.5105416774749756
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 3.143080949783325
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -5.8055830001831055
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.9761667847633362,
+                        "symbol": "+++",
+                        "description": "Very High"
+                    }
+                }
+            },
+            {
+                "smiles": "O=C1c2ccccc2Cc2ccccc21",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -3.7267541885375977
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 2.6993680000305176
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 2.5202391147613525
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -6.390613555908203
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.9216760396957397,
+                        "symbol": "+++",
+                        "description": "Very High"
+                    }
+                }
+            },
+            {
+                "smiles": "O=C(/C=C/c1ccc(-c2ccccc2[N+](=O)[O-])o1)c1ccccc1",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -4.64176607131958
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 3.6164722442626953
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 3.199716806411743
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -5.491178512573242
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.9671077132225037,
+                        "symbol": "+++",
+                        "description": "Very High"
+                    }
+                }
+            },
+            {
+                "smiles": "Cc1ccc(C(=O)/C=C\\C(=O)c2ccc(C)cc2)cc1",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -4.345926284790039
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 3.5488204956054688
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 3.115049362182617
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -5.252879619598389
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.9310181140899658,
+                        "symbol": "+++",
+                        "description": "Very High"
+                    }
+                }
+            },
+            {
+                "smiles": "O=C(CCC(=O)CCN1CCCCC1)CCN1CCCCC1",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -2.586320161819458
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 2.3304991722106934
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 2.180739402770996
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -4.932222366333008
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.9434232115745544,
+                        "symbol": "+++",
+                        "description": "Very High"
+                    }
+                }
+            },
+            {
+                "smiles": "CC(=O)OCc1cc(=O)n(C)c2c3c4c(cc12)c(C)cc(=O)n4CO3",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -3.6631839275360107
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 2.8434078693389893
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 2.678391695022583
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -5.1260576248168945
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.9484788775444031,
+                        "symbol": "+++",
+                        "description": "Very High"
+                    }
+                }
+            },
+            {
+                "smiles": "CC(C)=CC1CCc2ccccc2N1S(=O)(=O)c1ccc(C)cc1",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -4.122196197509766
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 3.4316015243530273
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 3.073359251022339
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -3.0992379188537598
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.9971246123313904,
+                        "symbol": "+++",
+                        "description": "Very High"
+                    }
+                }
+            },
+            {
+                "smiles": "COc1cc2cc(CN(CCc3ccccc3C)C(=S)NCCCN(C)C)c(=O)[nH]c2cc1OC",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -4.371328353881836
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 4.0144572257995605
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 3.508754253387451
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -4.39027738571167
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.7526699900627136,
+                        "symbol": "++",
+                        "description": "High"
+                    }
+                }
+            },
+            {
+                "smiles": "CN(C)CCCNC(=O)/C(=C\\c1ccc(-c2ccc(Br)cc2)o1)NC(=O)c1ccccc1",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -4.51615047454834
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 3.833250045776367
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 3.3702945709228516
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -6.870721817016602
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.950144350528717,
+                        "symbol": "+++",
+                        "description": "Very High"
+                    }
+                }
+            },
+            {
+                "smiles": "O=Cc1cc2c(o1)C(=O)c1ccccc1C2=O",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -3.601659059524536
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 2.3741295337677
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 2.3000175952911377
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -7.924529552459717
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.9155853986740112,
+                        "symbol": "+++",
+                        "description": "Very High"
+                    }
+                }
+            },
+            {
+                "smiles": "CCCc1nc([N+](=O)[O-])c(S(=O)(=O)c2ccccc2)n1CC(C)C",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -3.368739604949951
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 2.3209192752838135
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 2.0619583129882812
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -6.475100994110107
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.9875203371047974,
+                        "symbol": "+++",
+                        "description": "Very High"
+                    }
+                }
+            },
+            {
+                "smiles": "O=C(O)CCCCCCCCCCC(=O)O",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -3.511688232421875
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 2.8493287563323975
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 2.591554641723633
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -6.834192276000977
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.936734139919281,
+                        "symbol": "+++",
+                        "description": "Very High"
+                    }
+                }
+            },
+            {
+                "smiles": "CC(C)Cn1c(N)c(C(=O)CSc2ncnc3sc4c(c23)CCCC4)c(=O)n(C)c1=O",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -4.059528827667236
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 3.225245475769043
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 2.908695697784424
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -6.190765380859375
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.9910523295402527,
+                        "symbol": "+++",
+                        "description": "Very High"
+                    }
+                }
+            },
+            {
+                "smiles": "Cc1ccc(OC(=O)c2ccccc2O)cc1",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -4.045029163360596
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 3.3423104286193848
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 2.996546745300293
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -5.274351119995117
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.9381114840507507,
+                        "symbol": "+++",
+                        "description": "Very High"
+                    }
+                }
+            },
+            {
+                "smiles": "CCOC(=O)/C=C(/C(=O)OCC)n1ccc(=O)n(CC(=O)OCC)c1=O",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -4.154082298278809
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 3.428734540939331
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 3.0379037857055664
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -4.5827765464782715
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.9648599028587341,
+                        "symbol": "+++",
+                        "description": "Very High"
+                    }
+                }
+            },
+            {
+                "smiles": "S=C(N/N=C/c1ccccn1)N1CCCCC1",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -3.338156223297119
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 2.319427013397217
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 2.2659144401550293
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -8.25527286529541
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.9479158520698547,
+                        "symbol": "+++",
+                        "description": "Very High"
+                    }
+                }
+            },
+            {
+                "smiles": "CCc1ccccc1N1CCN(C(=O)c2cc(OC)c(OC)c(OC)c2)CC1",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -5.19664192199707
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 4.70662260055542
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 3.835275650024414
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -4.2342305183410645
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.6833875179290771,
+                        "symbol": "+",
+                        "description": "Moderate High"
+                    }
+                }
+            },
+            {
+                "smiles": "OCc1cn(Cc2ccccc2)c2ccccc12",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -3.551903009414673
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 2.700230360031128
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 2.5540974140167236
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -6.063989162445068
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.3972587585449219,
+                        "symbol": "-",
+                        "description": "Moderate Low"
+                    }
+                }
+            },
+            {
+                "smiles": "CNc1cc2c(c3ccccc13)C(CCl)CN2C(=O)c1cc2cc(OC)c(OC)c(OC)c2[nH]1",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -5.102931499481201
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 4.35316801071167
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 3.7302918434143066
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -5.3729939460754395
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.8842303156852722,
+                        "symbol": "++",
+                        "description": "High"
+                    }
+                }
+            },
+            {
+                "smiles": "CN1CCN(c2ccccc2NC(=O)c2ccc(OCc3ccccc3)cc2)CC1",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -4.714104175567627
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 4.147906303405762
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 3.606032133102417
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -5.745497226715088
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.47762563824653625,
+                        "symbol": "-",
+                        "description": "Moderate Low"
+                    }
+                }
+            },
+            {
+                "smiles": "Cc1cc(N/N=C/c2c(O)ccc3ccccc23)nc(-c2ccccc2O)n1",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -4.007322311401367
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 2.927572011947632
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 2.7692501544952393
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -7.507468223571777
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.9926922917366028,
+                        "symbol": "+++",
+                        "description": "Very High"
+                    }
+                }
+            },
+            {
+                "smiles": "COc1ccc(C(C(=O)NC2CCCCC2)N(C(=O)CCl)c2ccc(Cl)cc2)cc1",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -4.570237636566162
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 3.8995816707611084
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 3.3627331256866455
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -5.895077705383301
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.7108414173126221,
+                        "symbol": "++",
+                        "description": "High"
+                    }
+                }
+            },
+            {
+                "smiles": "COc1cc2cc(C(=O)N3CC(CCl)c4ccc(N(C)C)cc43)[nH]c2c(OC)c1OC",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -5.087788105010986
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 4.385435581207275
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 3.6824748516082764
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -6.205667972564697
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.9236325621604919,
+                        "symbol": "+++",
+                        "description": "Very High"
+                    }
+                }
+            },
+            {
+                "smiles": "COc1ccc2nc3c([N+](=O)[O-])ccc(NCCCN(C)C)c3c(N)c2c1",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -3.2984306812286377
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 2.6248910427093506
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 2.5359127521514893
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -6.667205333709717
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.9275904893875122,
+                        "symbol": "+++",
+                        "description": "Very High"
+                    }
+                }
+            },
+            {
+                "smiles": "CC(C)OC(=O)Nc1cccc(Cl)c1",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -3.336216926574707
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 2.571363925933838
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 2.4062960147857666
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -5.9706292152404785
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.9742065072059631,
+                        "symbol": "+++",
+                        "description": "Very High"
+                    }
+                }
+            },
+            {
+                "smiles": "COc1ccc(Br)cc1/C=C/C(=O)c1ccc(NC(C)=O)cc1",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -4.63659143447876
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 3.8143362998962402
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 3.2566399574279785
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -5.516688823699951
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.867426335811615,
+                        "symbol": "++",
+                        "description": "High"
+                    }
+                }
+            },
+            {
+                "smiles": "Oc1[nH]c2ccccc2c1N=NC(=S)Nc1ccccc1Cl",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -3.688459634780884
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 2.529290199279785
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 2.4563546180725098
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -9.803061485290527
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.8729470372200012,
+                        "symbol": "++",
+                        "description": "High"
+                    }
+                }
+            },
+            {
+                "smiles": "Cc1ccc(NC2=C/C(=N\\S(=O)(=O)c3cccs3)c3ccccc3C2=O)c(C)c1",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -3.8590610027313232
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 2.7987425327301025
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 2.6268961429595947
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -7.304910182952881
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.9337418675422668,
+                        "symbol": "+++",
+                        "description": "Very High"
+                    }
+                }
+            },
+            {
+                "smiles": "O=c1c(Cl)c(NCCCO)cnn1-c1nc2ccccc2[nH]1",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -3.4872772693634033
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 2.492877244949341
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 2.3758771419525146
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -9.40527629852295
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.9630386829376221,
+                        "symbol": "+++",
+                        "description": "Very High"
+                    }
+                }
+            },
+            {
+                "smiles": "O=C(Nc1ccc(CN2CCOCC2)cc1)c1ccc(-c2cccc(Cl)c2)o1",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -4.333741664886475
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 3.652341604232788
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 3.3035824298858643
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -6.7223711013793945
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.8105389475822449,
+                        "symbol": "++",
+                        "description": "High"
+                    }
+                }
+            },
+            {
+                "smiles": "CCCCCCCCCCCCCCCCNc1ccc(C(=O)O)cc1",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -4.341174125671387
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 4.200098991394043
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 3.5624818801879883
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -3.710843324661255
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.9621397852897644,
+                        "symbol": "+++",
+                        "description": "Very High"
+                    }
+                }
+            },
+            {
+                "smiles": "Cc1ccc2nc(NC(=O)/C=C/c3ccc4c(c3)OCO4)sc2c1",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -4.351294040679932
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 3.4051151275634766
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 3.0173070430755615
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -8.123218536376953
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.9732913374900818,
+                        "symbol": "+++",
+                        "description": "Very High"
+                    }
+                }
+            },
+            {
+                "smiles": "Cc1cc(=O)[nH]c2c1C(=O)c1c(C)cc(=O)n(C)c1C2=O",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -3.417065382003784
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 2.3334996700286865
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 2.264780044555664
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -8.302838325500488
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.9572314620018005,
+                        "symbol": "+++",
+                        "description": "Very High"
+                    }
+                }
+            },
+            {
+                "smiles": "COc1ccc(C(=O)c2c(C)n(CCN3CCOCC3)c3ccccc23)cc1",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -4.012175559997559
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 3.292093515396118
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 3.0124709606170654
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -6.1461405754089355
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.9160903096199036,
+                        "symbol": "+++",
+                        "description": "Very High"
+                    }
+                }
+            },
+            {
+                "smiles": "O=C1/C(=C/c2ccc(F)cc2)CNC/C1=C\\c1ccc(F)cc1",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -4.146960258483887
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 3.404130220413208
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 3.120257616043091
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -5.388932704925537
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.9879139065742493,
+                        "symbol": "+++",
+                        "description": "Very High"
+                    }
+                }
+            },
+            {
+                "smiles": "Cc1ccc2c(c1)C(=O)c1ccccc1C2=O",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -3.6272435188293457
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 2.691509246826172
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 2.511615514755249
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -4.890187740325928
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.9570951461791992,
+                        "symbol": "+++",
+                        "description": "Very High"
+                    }
+                }
+            },
+            {
+                "smiles": "CN[C@H]1C[C@H]2O[C@@](C)([C@H]1OC)n1c3ccccc3c3c4c(c5c6ccccc6n2c5c31)C(=O)NC4",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -2.7912492752075195
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 2.228048324584961
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 2.2169647216796875
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -7.57767391204834
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.9467273950576782,
+                        "symbol": "+++",
+                        "description": "Very High"
+                    }
+                }
+            },
+            {
+                "smiles": "CCOC(=O)N[C@H]1CCc2cc(OC)c(OC)c(OC)c2-c2ccc(SC)c(=O)cc21",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -4.827608108520508
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 4.327993869781494
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 3.673187732696533
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -3.7882041931152344
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.9548770189285278,
+                        "symbol": "+++",
+                        "description": "Very High"
+                    }
+                }
+            },
+            {
+                "smiles": "O=C(CSc1nnc(SCc2ccc(Cl)cc2)s1)N/N=C/c1c[nH]c2ccccc12",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -4.304797172546387
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 3.5777881145477295
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 3.254103183746338
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -5.826632976531982
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.9439288377761841,
+                        "symbol": "+++",
+                        "description": "Very High"
+                    }
+                }
+            },
+            {
+                "smiles": "CC1=CC(=O)[C@@H](O)[C@]2(C)[C@H]3[C@@]4(O)OC[C@]35[C@H]([C@@H](C)[C@H]4O)[C@@H](OC(=O)C(C)(C)CO)C(=O)O[C@@H]5C[C@@H]12",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -3.4134411811828613
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 3.0572495460510254
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 2.7686526775360107
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -6.222529411315918
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.9737780690193176,
+                        "symbol": "+++",
+                        "description": "Very High"
+                    }
+                }
+            },
+            {
+                "smiles": "Clc1cccc(CN2COc3c(cc(Cl)c4cccnc34)C2)c1",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -3.5187392234802246
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 3.303408145904541
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 2.9489617347717285
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -4.501946449279785
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.5055002570152283,
+                        "symbol": "+",
+                        "description": "Moderate High"
+                    }
+                }
+            },
+            {
+                "smiles": "O=S(=O)(O)c1cc(I)c(O)c2ncccc12",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -3.096386671066284
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 1.9396824836730957
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 1.9354547262191772
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -11.062256813049316
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.9283584356307983,
+                        "symbol": "+++",
+                        "description": "Very High"
+                    }
+                }
+            },
+            {
+                "smiles": "O=S(=O)(CCSc1nc2ccccc2o1)c1nc2ccccc2s1",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -3.5756020545959473
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 2.5382728576660156
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 2.491492986679077
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -6.709640026092529
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.993563175201416,
+                        "symbol": "+++",
+                        "description": "Very High"
+                    }
+                }
+            },
+            {
+                "smiles": "O=c1cc(-c2cccc(OCc3ccccc3)c2)[nH]c2cc3c(cc12)OCO3",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -4.651591777801514
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 3.87198805809021
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 3.470733880996704
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -5.251797199249268
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.7581160664558411,
+                        "symbol": "++",
+                        "description": "High"
+                    }
+                }
+            },
+            {
+                "smiles": "Cc1cc(C2CC2)nc(Nc2ccccc2)n1",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -3.9919986724853516
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 3.244582414627075
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 2.9512710571289062
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -5.933328151702881
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.9679629802703857,
+                        "symbol": "+++",
+                        "description": "Very High"
+                    }
+                }
+            },
+            {
+                "smiles": "COc1cc([C@@H]2c3cc4c(cc3C(N)C3COC(=O)[C@@H]32)OCO4)cc(OC)c1O",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -4.0890398025512695
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 3.647911310195923
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 3.2316176891326904
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -4.170266151428223
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.9856497645378113,
+                        "symbol": "+++",
+                        "description": "Very High"
+                    }
+                }
+            },
+            {
+                "smiles": "COc1cc2c(/C=C3/C(=O)Nc4ccccc43)c(Cl)[nH]c2cc1C",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -4.301519393920898
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 3.496751070022583
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 3.1503024101257324
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -5.152982711791992
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.9926643967628479,
+                        "symbol": "+++",
+                        "description": "Very High"
+                    }
+                }
+            },
+            {
+                "smiles": "COc1cnc(-c2ccccn2)nc1Sc1ccc(Cl)cc1",
+                "selected_properties": [
+                    "logS",
+                    "logP",
+                    "logD",
+                    "hydration",
+                    "pampa"
+                ],
+                "predictions": {
+                    "logS": {
+                        "name": "LogS",
+                        "type": "regression",
+                        "value": -4.67164421081543
+                    },
+                    "logP": {
+                        "name": "LogP",
+                        "type": "regression",
+                        "value": 3.9052672386169434
+                    },
+                    "logD": {
+                        "name": "LogD",
+                        "type": "regression",
+                        "value": 3.375936508178711
+                    },
+                    "hydration": {
+                        "name": "Hydration Free Energy",
+                        "type": "regression",
+                        "value": -5.476382732391357
+                    },
+                    "pampa": {
+                        "name": "PAMPA",
+                        "type": "classification",
+                        "probability": 0.9890609979629517,
+                        "symbol": "+++",
+                        "description": "Very High"
+                    }
+                }
+            }
+        ],
+        "count": 100
+    },
+    "timestamp": 1760076254
+}

@@ -45,7 +45,13 @@ ATOM_FEATURES = {
 
 # rdkit
 fdefName = os.path.join(RDConfig.RDDataDir,'BaseFeatures.fdef')
-FACTORY = ChemicalFeatures.BuildFeatureFactory(fdefName)
+try:
+    FACTORY = ChemicalFeatures.BuildFeatureFactory(fdefName)
+except Exception as e:
+    print(f"Warning: Could not load BaseFeatures.fdef from {fdefName}")
+    print(f"Error: {e}")
+    print("Using default feature factory...")
+    FACTORY = None
 declist = Descriptors.descList
 calc = {}
 for (i,j) in declist:

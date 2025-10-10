@@ -16,7 +16,7 @@
 		"epochs": 10,
 		"num_fold": 5,
 		"save_path": "./ckpt/bio",
-		"device": "cuda:1",
+		"device": "cpu",
 		"pre_train" : false
 
 	},

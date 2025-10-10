@@ -21,7 +21,13 @@ import os
 
 
 fdefName = os.path.join(RDConfig.RDDataDir,'BaseFeatures.fdef')
-factory = ChemicalFeatures.BuildFeatureFactory(fdefName)
+try:
+    factory = ChemicalFeatures.BuildFeatureFactory(fdefName)
+except Exception as e:
+    print(f"Warning: Could not load BaseFeatures.fdef from {fdefName}")
+    print(f"Error: {e}")
+    print("Using default feature factory...")
+    factory = None
 
 def bond_features(bond: Chem.rdchem.Bond):
     if bond is None:

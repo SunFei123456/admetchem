@@ -16,7 +16,7 @@
 		"epochs": 5,
 		"num_fold": 5,
 		"save_path": "ckpt/reg",
-		"device": "cuda:1",
+		"device": "cpu",
 		"pre_train" : false
 
 	},

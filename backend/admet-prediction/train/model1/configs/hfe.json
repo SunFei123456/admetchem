@@ -16,7 +16,7 @@
 		"epochs": 10,
 		"num_fold": 10,
 		"save_path": "./ckpt/hfe",
-		"device": "cuda:1",
+		"device": "cpu",
 		"pre_train" : false
 
 	},

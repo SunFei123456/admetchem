@@ -12,7 +12,8 @@
                                 <span class="font-medium text-gray-700">Click to select & calculate</span>
                             </div>
                             <!-- 全选按钮 -->
-                            <button @click="toggleSelectAll" class="text-sm px-3 py-1 rounded transition-colors duration-200"
+                            <button @click="toggleSelectAll"
+                                class="text-sm px-3 py-1 rounded transition-colors duration-200"
                                 :class="isAllSelected ? 'bg-blue-600 text-white hover:bg-blue-700' : 'bg-gray-300 text-gray-700 hover:bg-gray-400'">
                                 <i class="fas fa-check-double mr-1"></i>
                                 {{ isAllSelected ? '取消全选' : '全选' }}
@@ -22,7 +23,7 @@
 
                             <!-- Biophysics - 生物物理学性质 -->
                             <div class="border border-gray-200 rounded">
-                                <div @click="toggleCategory('biophysics')" 
+                                <div @click="toggleCategory('biophysics')"
                                     class="flex items-center justify-between p-3 cursor-pointer hover:bg-gray-50 transition-colors duration-200">
                                     <div class="flex items-center">
                                         <i class="fas fa-atom text-indigo-600 mr-2"></i>
@@ -38,8 +39,7 @@
                                     <div v-show="expandedCategories.biophysics" class="px-3 pb-3 space-y-2">
                                         <div v-for="prop in biophysicsProps" :key="prop.id" class="flex items-center">
                                             <input type="checkbox" :id="prop.id" v-model="selectedProperties"
-                                                :value="prop.id"
-                                                @change="updateSelectedModel(prop)"
+                                                :value="prop.id" @change="updateSelectedModel(prop)"
                                                 class="mr-3 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
                                             <label :for="prop.id" :class="[
                                                 'cursor-pointer text-sm transition-colors duration-200',
@@ -56,12 +56,13 @@
 
                             <!-- Physical Chemistry - 物理化学性质 -->
                             <div class="border border-gray-200 rounded">
-                                <div @click="toggleCategory('physicalChemistry')" 
+                                <div @click="toggleCategory('physicalChemistry')"
                                     class="flex items-center justify-between p-3 cursor-pointer hover:bg-gray-50 transition-colors duration-200">
                                     <div class="flex items-center">
                                         <i class="fas fa-flask text-cyan-600 mr-2"></i>
                                         <h3 class="font-semibold text-gray-800">Physical Chemistry</h3>
-                                        <span class="ml-2 text-xs text-gray-500">({{ physicalChemistryProps.length }})</span>
+                                        <span class="ml-2 text-xs text-gray-500">({{ physicalChemistryProps.length
+                                        }})</span>
                                     </div>
                                     <i :class="[
                                         'fas transition-transform duration-200',
@@ -70,10 +71,10 @@
                                 </div>
                                 <transition name="collapse">
                                     <div v-show="expandedCategories.physicalChemistry" class="px-3 pb-3 space-y-2">
-                                        <div v-for="prop in physicalChemistryProps" :key="prop.id" class="flex items-center">
+                                        <div v-for="prop in physicalChemistryProps" :key="prop.id"
+                                            class="flex items-center">
                                             <input type="checkbox" :id="prop.id" v-model="selectedProperties"
-                                                :value="prop.id"
-                                                @change="updateSelectedModel(prop)"
+                                                :value="prop.id" @change="updateSelectedModel(prop)"
                                                 class="mr-3 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
                                             <label :for="prop.id" :class="[
                                                 'cursor-pointer text-sm transition-colors duration-200',
@@ -90,7 +91,7 @@
 
                             <!-- Physiology - 生理学性质 -->
                             <div class="border border-gray-200 rounded">
-                                <div @click="toggleCategory('physiology')" 
+                                <div @click="toggleCategory('physiology')"
                                     class="flex items-center justify-between p-3 cursor-pointer hover:bg-gray-50 transition-colors duration-200">
                                     <div class="flex items-center">
                                         <i class="fas fa-heartbeat text-pink-600 mr-2"></i>
@@ -106,8 +107,7 @@
                                     <div v-show="expandedCategories.physiology" class="px-3 pb-3 space-y-2">
                                         <div v-for="prop in physiologyProps" :key="prop.id" class="flex items-center">
                                             <input type="checkbox" :id="prop.id" v-model="selectedProperties"
-                                                :value="prop.id"
-                                                @change="updateSelectedModel(prop)"
+                                                :value="prop.id" @change="updateSelectedModel(prop)"
                                                 class="mr-3 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
                                             <label :for="prop.id" :class="[
                                                 'cursor-pointer text-sm transition-colors duration-200',
@@ -156,8 +156,9 @@
                                 <input type="text" v-model="smilesInput"
                                     placeholder="CC1=CN=C(C(=C1OC)C)CS(=O)C2=NC3=C(N2)C=C(C=C3)OC"
                                     class="flex-1 px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
-                                <button
+                                <button @click="loadExample"
                                     class="bg-green-600 text-white px-3 py-1.5 text-sm rounded hover:bg-green-700 transition duration-200">
+                                    <i class="fas fa-flask mr-1"></i>
                                     eg: Omeprazole
                                 </button>
                             </div>
@@ -179,11 +180,12 @@
                         <div class="p-4">
                             <div class="flex items-center space-x-4">
                                 <label class="font-medium text-gray-700">Choose：</label>
-                                <input type="file" accept=".sdf"
+                                <input type="file" accept=".sdf" @change="handleFileChange"
                                     class="flex-1 px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
-                                <button
+                                <button v-if="uploadedFile"
                                     class="bg-green-600 text-white px-3 py-1.5 text-sm rounded hover:bg-green-700 transition duration-200">
-                                    20 compounds
+                                    <i class="fas fa-file mr-1"></i>
+                                    {{ uploadedFile.name }}
                                 </button>
                             </div>
                         </div>
@@ -196,23 +198,20 @@
                             <span class="font-medium text-gray-700">By Drawing Molecule from Editor Below</span>
                         </div>
                         <div class="p-4">
-                            <MolecularEditor 
-                                @smiles-generated="handleSmilesGenerated"
-                                @structure-changed="handleStructureChanged"
-                            />
+                            <MolecularEditor @smiles-generated="handleSmilesGenerated"
+                                @structure-changed="handleStructureChanged" />
                         </div>
                     </div>
 
                     <!-- 提交按钮 -->
                     <div class="flex space-x-4">
-                        <button
-                            :disabled="selectedPropsArray.length === 0"
+                        <button @click="handleSubmit" :disabled="selectedPropsArray.length === 0 || isLoading"
                             class="bg-green-600 text-white px-8 py-3 rounded font-medium hover:bg-green-700 transition duration-200 flex items-center disabled:bg-gray-400 disabled:cursor-not-allowed">
-                            <i class="fas fa-paper-plane mr-2"></i>
-                            Submit ({{ selectedPropsArray.length }} selected)
+                            <i :class="[isLoading ? 'fas fa-spinner fa-spin' : 'fas fa-paper-plane', 'mr-2']"></i>
+                            {{ isLoading ? '预测中...' : `Submit (${selectedPropsArray.length} selected)` }}
                         </button>
-                        <button
-                            class="bg-gray-500 text-white px-8 py-3 rounded font-medium hover:bg-gray-600 transition duration-200 flex items-center">
+                        <button @click="handleReset" :disabled="isLoading"
+                            class="bg-gray-500 text-white px-8 py-3 rounded font-medium hover:bg-gray-600 transition duration-200 flex items-center disabled:bg-gray-400 disabled:cursor-not-allowed">
                             <i class="fas fa-redo mr-2"></i>
                             Reset
                         </button>
@@ -226,7 +225,10 @@
 
 <script setup>
 import { ref, computed } from 'vue'
+import { useRouter } from 'vue-router'
 import MolecularEditor from '@/components/MolecularEditor.vue'
+import { predictADMET, analyzeSdfFileADMET } from '@/api'
+import message from '@/utils/message'
 
 // Biophysics - 生物物理学性质
 const biophysicsProps = ref([
@@ -282,6 +284,11 @@ const physiologyProps = ref([
 // 输入数据
 const smilesInput = ref('')
 const dataSource = ref('smiles')
+const uploadedFile = ref(null)
+const isLoading = ref(false)
+
+// 路由
+const router = useRouter()
 
 // 选中的属性集合（多选）
 const selectedProperties = ref(new Set())
@@ -339,6 +346,22 @@ const selectedPropsArray = computed(() => {
     return Array.from(selectedProperties.value)
 })
 
+// 加载示例SMILES
+const loadExample = () => {
+    // Omeprazole 的 SMILES
+    smilesInput.value = 'CC1=CN=C(C(=C1OC)C)CS(=O)C2=NC3=C(N2)C=C(C=C3)OC'
+    message.success('已加载示例分子：Omeprazole')
+}
+
+// 文件上传处理
+const handleFileChange = (event) => {
+    const file = event.target.files[0]
+    if (file) {
+        uploadedFile.value = file
+        console.log('File uploaded:', file.name)
+    }
+}
+
 // 分子编辑器事件处理
 const handleSmilesGenerated = (smiles) => {
     smilesInput.value = smiles
@@ -348,6 +371,92 @@ const handleSmilesGenerated = (smiles) => {
 
 const handleStructureChanged = (structure) => {
     console.log('Structure changed:', structure)
+}
+
+// 表单验证
+const validateInput = () => {
+    // 检查是否选择了至少一个属性
+    if (selectedProperties.value.size === 0) {
+        message.warning('请至少选择一个ADMET属性')
+        return false
+    }
+
+    // 根据数据源类型验证输入
+    if (dataSource.value === 'smiles' || dataSource.value === 'editor') {
+        if (!smilesInput.value || smilesInput.value.trim() === '') {
+            message.warning('请输入SMILES字符串')
+            return false
+        }
+    } else if (dataSource.value === 'file') {
+        if (!uploadedFile.value) {
+            message.warning('请上传SDF文件')
+            return false
+        }
+    }
+
+    return true
+}
+
+// 提交预测请求
+const handleSubmit = async () => {
+    if (!validateInput()) {
+        return
+    }
+
+    isLoading.value = true
+
+    try {
+        const propertyIds = Array.from(selectedProperties.value)
+
+        let response
+
+        if (dataSource.value === 'file') {
+            // SDF文件上传
+            const formData = new FormData()
+            formData.append('file', uploadedFile.value)
+            formData.append('property_ids', propertyIds.join(','))
+
+            response = await analyzeSdfFileADMET(formData)
+        } else {
+            // SMILES预测（包括手动输入和编辑器生成）
+            response = await predictADMET({
+                smiles: smilesInput.value.trim(),
+                property_ids: propertyIds
+            })
+        }
+
+        // 处理响应
+        if (response.code === 0) {
+            message.success('ADMET预测成功')
+
+            // 跳转到结果页面，并传递结果数据
+            router.push({
+                name: 'admet-result',
+                state: {
+                    result: response.data,
+                    dataSource: dataSource.value,
+                    selectedProperties: propertyIds
+                }
+            })
+        } else {
+            message.error(response.message || 'ADMET预测失败')
+        }
+    } catch (error) {
+        console.error('ADMET prediction error:', error)
+        message.error(error.message || 'ADMET预测失败，请检查输入或稍后重试')
+    } finally {
+        isLoading.value = false
+    }
+}
+
+// 重置表单
+const handleReset = () => {
+    smilesInput.value = ''
+    uploadedFile.value = null
+    selectedProperties.value.clear()
+    dataSource.value = 'smiles'
+
+    message.info('表单已重置')
 }
 </script>
 

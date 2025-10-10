@@ -12,7 +12,7 @@ import request from './request'
  */
 export function evaluateSmiles(data) {
   return request({
-    url: '/api/v1/druglikeness/evaluate',
+    url: '/druglikeness/evaluate',
     method: 'post',
     data
   })
@@ -29,7 +29,7 @@ export function evaluateSmiles(data) {
  */
 export function evaluateComprehensive(data) {
   return request({
-    url: '/api/v1/druglikeness/evaluate',
+    url: '/druglikeness/evaluate',
     method: 'post',
     data
   })
@@ -49,7 +49,7 @@ export function evaluateComprehensive(data) {
  */
 export function analyzeSdfFile(formData, params) {
   return request({
-    url: '/api/v1/sdf/analyze',
+    url: '/sdf/analyze',
     method: 'post',
     data: formData,
     params,
@@ -67,7 +67,7 @@ export function analyzeSdfFile(formData, params) {
  */
 export function convertSdfToSmiles(formData, params = {}) {
   return request({
-    url: '/api/v1/sdf/to-smiles',
+    url: '/sdf/to-smiles',
     method: 'post',
     data: formData,
     params: {

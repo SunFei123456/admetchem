@@ -16,7 +16,7 @@ pydantic-settings>=2.0.0
 email-validator>=2.0.0
 
 # Chemistry & Scientific Computing
-rdkit==2025.3.6
+rdkit==2023.9.2
 numpy==2.3.3
 Pillow==11.3.0
 

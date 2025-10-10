@@ -69,7 +69,10 @@ class ADMETService:
     
     def __init__(self):
         """初始化ADMET服务"""
-        pass
+        # 保存model1目录路径，用于切换工作目录
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        backend_dir = os.path.dirname(os.path.dirname(current_dir))
+        self.model_dir = os.path.join(backend_dir, 'admet-prediction', 'train', 'model1')
     
     def validate_smiles(self, smiles: str) -> None:
         """
@@ -229,17 +232,27 @@ class ADMETService:
         smiles = smiles.strip()
         
         try:
-            # 调用预测函数
-            raw_result = predict_smiles([smiles], task_names)
+            # 保存当前工作目录
+            original_cwd = os.getcwd()
             
-            # 格式化结果
-            formatted_result = self.format_prediction_result(
-                raw_result, 
-                smiles, 
-                property_ids
-            )
-            
-            return formatted_result
+            try:
+                # 切换到model1目录（predict.py需要在此目录下运行）
+                os.chdir(self.model_dir)
+                
+                # 调用预测函数
+                raw_result = predict_smiles([smiles], task_names)
+                
+                # 格式化结果
+                formatted_result = self.format_prediction_result(
+                    raw_result, 
+                    smiles, 
+                    property_ids
+                )
+                
+                return formatted_result
+            finally:
+                # 恢复原工作目录
+                os.chdir(original_cwd)
             
         except Exception as e:
             raise Exception(f"ADMET预测失败: {str(e)}")
@@ -276,20 +289,30 @@ class ADMETService:
             cleaned_smiles.append(smiles.strip())
         
         try:
-            # 调用预测函数
-            raw_result = predict_smiles(cleaned_smiles, task_names)
+            # 保存当前工作目录
+            original_cwd = os.getcwd()
             
-            # 格式化每个分子的结果
-            formatted_results = []
-            for smiles in cleaned_smiles:
-                formatted_result = self.format_prediction_result(
-                    raw_result, 
-                    smiles, 
-                    property_ids
-                )
-                formatted_results.append(formatted_result)
-            
-            return formatted_results
+            try:
+                # 切换到model1目录（predict.py需要在此目录下运行）
+                os.chdir(self.model_dir)
+                
+                # 调用预测函数
+                raw_result = predict_smiles(cleaned_smiles, task_names)
+                
+                # 格式化每个分子的结果
+                formatted_results = []
+                for smiles in cleaned_smiles:
+                    formatted_result = self.format_prediction_result(
+                        raw_result, 
+                        smiles, 
+                        property_ids
+                    )
+                    formatted_results.append(formatted_result)
+                
+                return formatted_results
+            finally:
+                # 恢复原工作目录
+                os.chdir(original_cwd)
             
         except Exception as e:
             raise Exception(f"批量ADMET预测失败: {str(e)}")

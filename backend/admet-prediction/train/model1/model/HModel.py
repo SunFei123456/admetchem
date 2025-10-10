@@ -7,6 +7,9 @@ from rdkit import Chem
 from torch import nn
 import torch.nn.functional as F
 from dgl import function as fn
+# 兼容不同版本的DGL
+if not hasattr(fn, 'copy_src'):
+    fn.copy_src = fn.copy_u
 from functools import partial
 import copy
 

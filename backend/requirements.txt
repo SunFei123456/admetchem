@@ -16,6 +16,9 @@ pydantic>=2.4.0
 pydantic-settings>=2.0.0
 email-validator>=2.0.0
 
+# HTTP Client (for AI services)
+httpx>=0.25.0
+
 # Chemistry & Scientific Computing
 rdkit==2023.9.2
 numpy==2.3.3

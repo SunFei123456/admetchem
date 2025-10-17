@@ -6,7 +6,7 @@ import DruglikenessResult from '@/views/DruglikenessResult.vue'
 import AdmetPrediction from '@/views/AdmetPrediction.vue'
 import AdmetPredictionResult from '@/views/AdmetPredictionResult.vue'
 import MoleculeDetail from '@/views/MoleculeDetail.vue'
-import Optimization from '@/views/Optimization.vue'
+import AIChat from '@/views/AIChat.vue'
 import Search from '@/views/Search.vue'
 import Login from '@/views/Login.vue'
 import Register from '@/views/Register.vue'
@@ -70,9 +70,9 @@ const router = createRouter({
             component: MoleculeDetail
         },
         {
-            path: '/optimization',
-            name: 'Optimization',
-            component: Optimization
+            path: '/ai-chat',
+            name: 'AIChat',
+            component: AIChat
         },
         {
             path: '/search',

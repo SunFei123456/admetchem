@@ -53,9 +53,9 @@
                         class="text-gray-300 hover:text-white px-4 py-2 font-medium transition duration-300 hover:scale-105">
                         <i class="fas fa-search mr-2 hover:rotate-90 transition-transform duration-300"></i>Search
                     </router-link>
-                    <router-link to="/optimization"
+                    <router-link to="/ai-chat"
                         class="text-gray-300 hover:text-white px-4 py-2 font-medium transition duration-300 hover:scale-105">
-                        <i class="fas fa-cogs mr-2 hover:-rotate-12 transition-transform duration-300"></i>Optimization
+                        <i class="fas fa-robot mr-2 hover:bounce transition-transform duration-300"></i>AI Chat
                     </router-link>
                     <a href="#"
                         class="text-gray-300 hover:text-white px-4 py-2 font-medium transition duration-300 hover:scale-105">

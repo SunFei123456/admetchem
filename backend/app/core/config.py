@@ -40,6 +40,11 @@ class Settings(BaseSettings):
     # token过期失常30天
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 60 * 24 * 30
 
+    # DeepSeek AI 配置
+    DEEPSEEK_API_KEY: str = ""  # 从环境变量或 .env 文件读取
+    DEEPSEEK_MODEL: str = "deepseek-chat"  # 默认模型: deepseek-chat
+    DEEPSEEK_TEMPERATURE: float = 0.7  # 默认温度 (0-1)
+
     class Config:
         case_sensitive = True
         env_file = ".env"

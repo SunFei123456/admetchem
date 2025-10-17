@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from app.api.endpoints import users, druglikeness, sdf, admet
+from app.api.endpoints import users, druglikeness, sdf, admet, ai
 
 router = APIRouter()
 
@@ -9,3 +9,4 @@ router.include_router(
 )
 router.include_router(sdf.router, prefix="/sdf", tags=["sdf"])
 router.include_router(admet.router, prefix="/admet", tags=["admet"])
+router.include_router(ai.router, prefix="/ai", tags=["ai"])

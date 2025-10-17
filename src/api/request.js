@@ -34,13 +34,12 @@ const request = axios.create({
 request.interceptors.request.use(
   (config) => {
     // 在发送请求之前做些什么
-    // 可以在这里添加 token 等认证信息
-    // const token = localStorage.getItem('token')
-    // if (token) {
-    //   config.headers.Authorization = `Bearer ${token}`
-    // }
+    // 添加 token 等认证信息
+    const token = localStorage.getItem('admet_token')
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`
+    }
     
-    console.log('发送请求:', config.method?.toUpperCase(), config.url)
     return config
   },
   (error) => {

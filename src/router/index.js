@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory,createWebHashHistory } from 'vue-router'
+import { createRouter, createWebHistory, createWebHashHistory } from 'vue-router'
 import Home from '@/views/Home.vue'
 import About from '@/views/About.vue'
 import DruglikenessEvaluation from '@/views/DruglikenessEvaluation.vue'
@@ -8,6 +8,10 @@ import AdmetPredictionResult from '@/views/AdmetPredictionResult.vue'
 import MoleculeDetail from '@/views/MoleculeDetail.vue'
 import Optimization from '@/views/Optimization.vue'
 import Search from '@/views/Search.vue'
+import Login from '@/views/Login.vue'
+import Register from '@/views/Register.vue'
+import Profile from '@/views/Profile.vue'
+import { isLoggedIn } from '@/utils/auth.js'
 
 const router = createRouter({
     history: createWebHashHistory(),
@@ -21,6 +25,24 @@ const router = createRouter({
             path: '/about',
             name: 'About',
             component: About
+        },
+        {
+            path: '/login',
+            name: 'Login',
+            component: Login,
+            meta: { hideForAuth: true } // 已登录用户隐藏
+        },
+        {
+            path: '/register',
+            name: 'Register',
+            component: Register,
+            meta: { hideForAuth: true } // 已登录用户隐藏
+        },
+        {
+            path: '/profile',
+            name: 'Profile',
+            component: Profile,
+            meta: { requiresAuth: true } // 需要登录
         },
         {
             path: '/druglikeness-evaluation',
@@ -58,6 +80,25 @@ const router = createRouter({
             component: Search
         }
     ]
+})
+
+// 路由守卫
+router.beforeEach((to, from, next) => {
+    const loggedIn = isLoggedIn()
+
+    // 需要登录的页面
+    if (to.meta.requiresAuth && !loggedIn) {
+        next('/login')
+        return
+    }
+
+    // 已登录用户访问登录/注册页面，重定向到首页
+    if (to.meta.hideForAuth && loggedIn) {
+        next('/')
+        return
+    }
+
+    next()
 })
 
 export default router

@@ -1,4 +1,4 @@
-from pydantic import BaseModel, EmailStr
+from pydantic import BaseModel, EmailStr, Field
 from typing import Optional, Dict, Any, List
 from datetime import datetime
 
@@ -12,6 +12,9 @@ class UserBase(BaseModel):
     # 用户名
     username: str
 
+    # 用户头像URL
+    avatar: Optional[str] = None
+
     # 是否激活，默认为True
     is_active: bool = True
 
@@ -20,14 +23,30 @@ class UserCreate(UserBase):
     """创建用户模式"""
 
     # 密码
-    password: str
+    password: str = Field(..., min_length=8, max_length=20, description="密码长度8-20位")
 
 
-class UserUpdate(UserBase):
+class UserLogin(BaseModel):
+    """用户登录模式"""
+    
+    email: EmailStr
+    password: str = Field(..., max_length=20, description="密码")
+
+
+class UserUpdate(BaseModel):
     """更新用户模式"""
 
-    # 密码（可选）
-    password: Optional[str] = None
+    # 用户名（可选）
+    username: Optional[str] = Field(None, min_length=2, max_length=50)
+    
+    # 用户头像URL（可选）
+    avatar: Optional[str] = None
+    
+    # 旧密码（修改密码时必填）
+    old_password: Optional[str] = Field(None, max_length=20)
+    
+    # 新密码（可选）
+    new_password: Optional[str] = Field(None, min_length=8, max_length=20)
 
 
 class User(UserBase):
@@ -44,6 +63,20 @@ class User(UserBase):
 
     class Config:
         from_attributes = True
+
+
+class Token(BaseModel):
+    """Token响应模式"""
+    
+    access_token: str
+    token_type: str = "bearer"
+
+
+class TokenData(BaseModel):
+    """Token数据模式"""
+    
+    user_id: Optional[int] = None
+    email: Optional[str] = None
 
 
 class DruglikenessRequest(BaseModel):

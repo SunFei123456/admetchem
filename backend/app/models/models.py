@@ -20,6 +20,13 @@ class User(Base):
     # 哈希密码，不可为空
     hashed_password = Column(String(255), nullable=False)
 
+    # 用户头像URL，默认头像
+    avatar = Column(
+        String(500), 
+        nullable=True,
+        default="https://res.cloudinary.com/dazdjqzwd/image/upload/v1760685557/68d9f143293f4f17bccdbc791dcf779d_f0rcro.png"
+    )
+
     # 用户是否激活，默认为True
     is_active = Column(Boolean, default=True)
 

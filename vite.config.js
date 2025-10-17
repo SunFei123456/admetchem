@@ -21,6 +21,10 @@ export default defineConfig({
   },
   server: {
     port: 3000,
-    open: true
+    open: true,
+    // 开发环境禁用缓存
+    headers: {
+      'Cache-Control': 'no-store'
+    }
   }
 })

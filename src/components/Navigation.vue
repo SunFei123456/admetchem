@@ -61,14 +61,58 @@
                         class="text-gray-300 hover:text-white px-4 py-2 font-medium transition duration-300 hover:scale-105">
                         <i class="fas fa-question-circle mr-2 hover:bounce"></i>Help
                     </a>
-                    <a href="#"
-                        class="text-gray-300 hover:text-white px-4 py-2 font-medium transition duration-300 hover:scale-105">
-                        <i class="fas fa-envelope mr-2 hover:wiggle"></i>Contact
-                    </a>
-                    <span
-                        class="text-gray-400 text-sm border border-gray-600 px-2 py-1 rounded hover:border-gray-500 transition-colors duration-300">
-                        <i class="fas fa-users text-xs mr-1"></i>CBDD GROUP
-                    </span>
+
+                    <!-- 用户认证区域 -->
+                    <div class="flex items-center space-x-2 ml-4 pl-4 border-l border-gray-600">
+                        <!-- 未登录 -->
+                        <template v-if="!isLoggedIn">
+                            <router-link to="/login"
+                                class="text-gray-300 hover:text-white px-3 py-1.5 font-medium transition duration-300 hover:scale-105">
+                                <i class="fas fa-sign-in-alt mr-1"></i>Login
+                            </router-link>
+                            <router-link to="/register"
+                                class="bg-blue-600 text-white px-3 py-1.5 rounded font-medium hover:bg-blue-700 transition duration-300 hover:scale-105">
+                                <i class="fas fa-user-plus mr-1"></i>Register
+                            </router-link>
+                        </template>
+
+                        <!-- 已登录 -->
+                        <div v-else class="relative group">
+                            <button
+                                class="flex items-center space-x-2 text-gray-300 hover:text-white px-3 py-1.5 font-medium transition duration-300">
+                                <!-- 用户头像 -->
+                                <div v-if="currentUser?.avatar"
+                                    class="w-8 h-8 rounded-full overflow-hidden border-2 border-blue-400">
+                                    <img :src="currentUser.avatar" :alt="currentUser.username"
+                                        class="w-full h-full object-cover" />
+                                </div>
+                                <div v-else class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-user text-white text-sm"></i>
+                                </div>
+                                <span>{{ currentUser?.username || 'User' }}</span>
+                                <i
+                                    class="fas fa-chevron-down text-xs transition-transform duration-300 group-hover:rotate-180"></i>
+                            </button>
+
+                            <!-- 用户下拉菜单 -->
+                            <div
+                                class="absolute right-0 top-full mt-1 w-48 bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-50">
+                                <div class="py-2">
+                                    <router-link to="/profile"
+                                        class="flex items-center px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition duration-200">
+                                        <i class="fas fa-user-circle text-blue-500 mr-3"></i>
+                                        <span>Profile</span>
+                                    </router-link>
+                                    <div class="border-t border-gray-200 my-1"></div>
+                                    <button @click="handleLogout"
+                                        class="w-full flex items-center px-4 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 transition duration-200">
+                                        <i class="fas fa-sign-out-alt text-red-500 mr-3"></i>
+                                        <span>Logout</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- 移动端菜单按钮 -->
@@ -99,9 +143,27 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
+import { isLoggedIn as checkLoggedIn, getUser, clearAuth } from '@/utils/auth.js'
+import message from '@/utils/message.js'
 
+const router = useRouter()
 const isMobileMenuOpen = ref(false)
+const currentUser = ref(null)
+const isLoggedIn = ref(false) // 改为响应式 ref
+
+// 加载用户信息
+const loadUserInfo = () => {
+    const loggedIn = checkLoggedIn()
+    isLoggedIn.value = loggedIn // 更新登录状态
+
+    if (loggedIn) {
+        currentUser.value = getUser()
+    } else {
+        currentUser.value = null
+    }
+}
 
 const toggleMobileMenu = () => {
     isMobileMenuOpen.value = !isMobileMenuOpen.value
@@ -110,6 +172,29 @@ const toggleMobileMenu = () => {
 const closeMobileMenu = () => {
     isMobileMenuOpen.value = false
 }
+
+// 退出登录
+const handleLogout = () => {
+    clearAuth()
+    isLoggedIn.value = false // 更新登录状态
+    currentUser.value = null
+    message.success({
+        title: '退出成功',
+        message: '您已成功退出登录',
+        duration: 2000
+    })
+    router.push('/')
+}
+
+// 组件挂载时加载用户信息
+onMounted(() => {
+    loadUserInfo()
+})
+
+// 监听路由变化，更新用户信息
+router.afterEach(() => {
+    loadUserInfo()
+})
 </script>
 
 <style scoped>

@@ -35,8 +35,10 @@ class Settings(BaseSettings):
 
     # JWT
     SECRET_KEY: str = "your-secret-key-here"
+    # 使用HS256算法
     ALGORITHM: str = "HS256"
-    ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
+    # token过期失常30天
+    ACCESS_TOKEN_EXPIRE_MINUTES: int = 60 * 24 * 30
 
     class Config:
         case_sensitive = True
